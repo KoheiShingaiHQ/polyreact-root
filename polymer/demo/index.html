@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>koheishingai-element demo</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../koheishingai-header.html">
+    <link rel="import" href="../koheishingai-nav.html">
+    <link rel="import" href="../koheishingai-search.html">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .centered {
+          max-width: 100%;
+        }
+        .child {
+          display: none;
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic koheishingai-element demo</h3>
+      <demo-snippet class="parent">
+        <template>
+          <koheishingai-header title="koheishingai"></koheishingai-header>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-nav></koheishingai-nav>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-search></koheishingai-search>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
