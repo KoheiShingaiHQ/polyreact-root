@@ -1,0 +1,80 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/polymer/koheishingai-content.html">
+
+<dom-module id="koheishingai-contents-half">
+  <template>
+    <style>
+      :host * {
+        box-sizing: border-box;
+      }
+      :host ul {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        list-style-type: none;
+        overflow: hidden;
+      }
+      :host section li {
+        float: left;
+        width: 50%;
+        background: #fafafa;
+        border-bottom: 12px solid #fff;
+      }
+      :host section li:nth-child(odd) {
+        border-right: 6px solid #fff;
+      }
+      :host section li:nth-child(even) {
+        border-left: 6px solid #fff;
+      }
+      :host section li:nth-last-child(0) {
+        clear:both;
+      }
+      :host li > div {}
+      @media only screen and (max-width: 840px) {
+        :host section li {
+          width: 100%;
+          border-left: none;
+          border-right: none;
+        }
+      }
+    </style>
+    <main>
+      <section>
+        <ul>
+          <template is="dom-repeat" items="{{contents}}">
+            <li>
+              <div style="background-color:{{item.bg_color}};height:{{item.height}}">
+                <koheishingai-content main_small="{{item.main}}" sub_small="{{item.sub}}"></koheishingai-content>              
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
+    </main>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-contents-half`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiContentsHalf extends Polymer.Element {
+      static get is() { return 'koheishingai-contents-half'; }
+      constructor() {
+        super();
+        this.contents = [
+          {bg_color: '#fafafa', height: '346px', main: "tv 4k", sub: 'The 4K HDR era. Now playing.'},
+          {bg_color: '#fafafa', height: '346px', main: "iOS 11", sub: 'Available now.'},
+          {bg_color: '#fafafa', height: '346px', main: "watchOS 4", sub: 'Available now.'},
+          {bg_color: '#fafafa', height: '346px', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'}
+        ];
+      }
+    }
+    window.customElements.define(KoheishingaiContentsHalf.is, KoheishingaiContentsHalf);
+  </script>
+</dom-module>

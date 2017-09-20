@@ -1,0 +1,118 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="koheishingai-content">
+  <template>
+    <style>
+      :host > div {
+        position: relative;
+        z-index: 1;
+        -webkit-box-flex: 0;
+        -webkit-flex-grow: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        padding-top: 65px;
+        color: #111;
+        text-align: center;    
+      }
+      :host > div > h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+        line-height: 1.07143;
+        font-weight: 600;
+        letter-spacing: -.005em;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host > div > h3 {
+        font-size: 27px;
+        line-height: 1.14815;
+        font-weight: 400;
+        letter-spacing: .008em;
+        margin-top: 6px;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host > div > h4 {
+        margin: 0;
+        padding: 0;
+        margin-top: -27px;
+        font-size: 48px;
+        line-height: 1.08365;
+        font-weight: 600;
+        letter-spacing: -.003em;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host > div > h5 {
+        margin: 0;
+        padding: 0;
+        margin-top: 0.2em;
+        font-size: 24px;
+        line-height: 1.16667;
+        font-weight: 400;
+        letter-spacing: .009em;
+        font-family: 'Roboto', sans-serif;
+      }
+      @media only screen and (max-width: 840px) {
+        :host > div {
+          padding-top: 39px;
+        }
+        :host > div > h2, :host > div > h4 {
+          font-size: 32px;
+          line-height: 1.125;
+          font-weight: 600;
+          letter-spacing: .004em;
+        }
+        :host > div > h4 {
+          margin-top: -16px;
+        }
+        :host > div > h3, :host > div > h5 {
+          font-size: 19px;
+          line-height: 1.42115;
+          font-weight: 400;
+          letter-spacing: .012em;
+        }
+      }
+    </style>
+    <div>
+      <h2>{{main}}</h2>
+      <h3>{{sub}}</h3>
+      <h4>{{main_small}}</h4>
+      <h5>{{sub_small}}</h5>																 
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-content`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiContent extends Polymer.Element {
+      static get is() { return 'koheishingai-content'; }
+      static get properties() {
+        return {
+          main: {
+            type: String,
+            value: ''
+          },
+          sub: {
+            type: String,
+            value: ''
+          },
+          main_small: {
+            type: String,
+            value: ''
+          },
+          sub_small: {
+            type: String,
+            value: ''
+          }
+        };
+      }
+    }
+    window.customElements.define(KoheishingaiContent.is, KoheishingaiContent);
+  </script>
+</dom-module>

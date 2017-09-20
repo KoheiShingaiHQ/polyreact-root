@@ -4,20 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>koheishingai-element demo</title>
+    <title>koheishingai-element top</title>
 
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
     <link rel="import" href="../koheishingai-header.html">
     <link rel="import" href="../koheishingai-nav.html">
     <link rel="import" href="../koheishingai-search.html">
+    <link rel="import" href="../koheishingai-top-main.html">
+    <link rel="import" href="../koheishingai-contents-full.html">
+    <link rel="import" href="../koheishingai-contents-half.html">
+    <link rel="import" href="../koheishingai-content.html">
+    <link rel="import" href="../koheishingai-footer.html">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+        * {
+          --koheishingai-header-position: relative;
+          --koheishingai-top-main-top: 0px;
+          --koheishingai-top-main-margin-top: 0px;
+          --koheishingai-top-main-margin-bottom: 0px;
+          --koheishingai-footer-position: relative;
+          --koheishingai-footer-margin-top: 0px;
+        }
         .centered {
           max-width: 100%;
         }
@@ -29,7 +44,7 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic koheishingai-element demo</h3>
+      <h3>koheishingai-element top</h3>
       <demo-snippet class="parent">
         <template>
           <koheishingai-header title="koheishingai"></koheishingai-header>
@@ -43,6 +58,36 @@
       <demo-snippet class="child">
         <template>
           <koheishingai-search></koheishingai-search>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="main">
+        <template>
+          <koheishingai-top-main></koheishingai-top-main>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-contents-full></koheishingai-contents-full>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-contents-half></koheishingai-contents-half>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-content main="iPhone 8" sub="A new generation of iPhone."></koheishingai-content>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-content main_small="iPhone 8" sub_small="A new generation of iPhone."></koheishingai-content>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="main">
+        <template>
+          <koheishingai-footer></koheishingai-footer>
         </template>
       </demo-snippet>
     </div>

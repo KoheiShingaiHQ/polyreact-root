@@ -1,0 +1,62 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/polymer/koheishingai-content.html">
+
+<dom-module id="koheishingai-contents-full">
+  <template>
+    <style>
+      :host * {
+        box-sizing: border-box;
+      }
+      :host ul {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        list-style-type: none;
+        overflow: hidden;
+      }
+      :host section li {
+        background: #fafafa;
+        border-bottom: 12px solid #fff;
+        width: 100%;
+      }
+      :host li > div {}
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+      <section>
+        <ul>
+          <template is="dom-repeat" items="{{contents}}">
+            <li>
+              <div style="background-color:{{item.bg_color}};height:{{item.height}}">
+                <koheishingai-content main="{{item.main}}" sub="{{item.sub}}"></koheishingai-content>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-contents-full`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiContentsFull extends Polymer.Element {
+      static get is() { return 'koheishingai-contents-full'; }
+      constructor() {
+        super();
+        this.contents = [
+          {bg_color: '#fafafa', height: '346px', main: 'iPhone 8', sub: 'A new generation of iPhone.'},
+          {bg_color: '#fafafa', height: '346px', main: 'iPhone X', sub: 'Say hello to the future.'},
+          {bg_color: '#fafafa', height: '346px', main: 'WATCH', sub: 'Freedom calls.'}
+        ];
+      }
+    }
+    window.customElements.define(KoheishingaiContentsFull.is, KoheishingaiContentsFull);
+  </script>
+</dom-module>

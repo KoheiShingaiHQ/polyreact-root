@@ -6,14 +6,15 @@
   <template>
     <style>
       :host * {
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          transition: transform 0.1s ease, width 0.1s ease;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        transition: transform 0.1s ease, width 0.1s ease;
       }
       :host header {
-        position: relative;
+        position: var(--koheishingai-header-position, fixed);
         left: 0px;
         top: 0px;
+        z-index: 2;
         overflow: hidden;
         width: 100%;
         height: 64px;

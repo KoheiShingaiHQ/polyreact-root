@@ -1,0 +1,43 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/koheishingai-contents-full.html">
+<link rel="import" href="/polymer/koheishingai-contents-half.html">
+
+<dom-module id="koheishingai-top-main">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host main {
+        position: relative;
+        top: var(--koheishingai-top-main-top, 64px);
+        margin: 0 auto;
+        margin-top: var(--koheishingai-top-main-margin-top, 12px);
+        margin-bottom: var(--koheishingai-top-main-margin-bottom, 24px);
+        max-width: 2560px;
+      }
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+    <main>
+      <koheishingai-contents-full></koheishingai-contents-full>
+      <koheishingai-contents-half></koheishingai-contents-half>
+    </main>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-top-main`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiTopMain extends Polymer.Element {
+      static get is() { return 'koheishingai-top-main'; }
+    }
+    window.customElements.define(KoheishingaiTopMain.is, KoheishingaiTopMain);
+  </script>
+</dom-module>
