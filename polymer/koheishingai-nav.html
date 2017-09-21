@@ -1,5 +1,4 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
 
 <dom-module id="koheishingai-nav">
   <template>
@@ -22,6 +21,10 @@
           cursor: pointer;
           -webkit-font-smoothing: antialiased;
       }
+      :host li.selected {
+          color: #00a2df;
+          cursor: default;
+      }      
       @media only screen and (max-width: 840px) {  
           :host ul {
             display: none;
@@ -31,7 +34,12 @@
     <nav>
       <ul>
         <template is="dom-repeat" items="{{menus}}">
-          <li>{{item.name}}</li>
+          <template is="dom-if" if="{{item.selected}}">
+            <li class="selected">{{item.name}}</li>
+          </template>
+          <template is="dom-if" if="{{!item.selected}}">
+            <a href="{{item.path}}"><li>{{item.name}}</li></a>
+          </template>
         </template>
       </ul>
     </nav>
@@ -51,13 +59,12 @@
       constructor() {
         super();
         this.menus = [
-          {name: 'About'},
-          {name: 'Article'},
-          {name: 'Featured'}
+          {name: 'About', path: '/about', selected: ('/about' == location.pathname)},
+          {name: 'Article', path: '/article', selected: ('/article' == location.pathname)},
+          {name: 'Featured', path: '/', selected: ('/' == location.pathname)}
         ];
       }
     }
-
     window.customElements.define(KoheishingaiNav.is, KoheishingaiNav);
   </script>
 </dom-module>

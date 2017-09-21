@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Link } from 'react-router-dom'
+import Featured from './container/Featured.js'
+import Article from './container/Article.js'
+import About from './container/About.js'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <koheishingai-header title="koheishingai"></koheishingai-header>
-        <koheishingai-top-main></koheishingai-top-main>
+        <Route exact path="/" component={Featured} />
+        <Route exact path="/article" component={Article} />
+        <Route exact path="/about" component={About} />
         <koheishingai-footer></koheishingai-footer>
       </div>
     );
