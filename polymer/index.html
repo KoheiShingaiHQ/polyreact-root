@@ -16,6 +16,9 @@
     <link rel="import" href="koheishingai-search.html">
     <link rel="import" href="koheishingai-top-main.html">
     <link rel="import" href="koheishingai-about-main.html">
+    <link rel="import" href="koheishingai-article-main.html">
+    <link rel="import" href="koheishingai-side-panel.html">
+    <link rel="import" href="koheishingai-filter.html">
     <link rel="import" href="koheishingai-contents-full.html">
     <link rel="import" href="koheishingai-contents-half.html">
     <link rel="import" href="koheishingai-content.html">
@@ -24,11 +27,14 @@
       <style is="custom-style" include="demo-pages-shared-styles">
         * {
           --koheishingai-header-position: relative;
-          --koheishingai-top-main-top: 0px;
-          --koheishingai-top-main-margin-top: 0px;
-          --koheishingai-top-main-margin-bottom: 0px;
+          --koheishingai-main-position: relative;
+          --koheishingai-main-top: 0px;
+          --koheishingai-main-margin-top: 0px;
+          --koheishingai-main-margin-bottom: 0px;
           --koheishingai-footer-position: relative;
           --koheishingai-footer-margin-top: 0px;
+          --koheishingai-side-panel-position: relative;
+          --koheishingai-side-panel-height: 100%;
         }
         h3 {
           color: #696969;
@@ -93,6 +99,18 @@
           <koheishingai-article-main></koheishingai-article-main>
         </template>
       </demo-snippet>
+      <h3>koheishingai-side-panel</h3>
+      <demo-snippet class="main">
+        <template>
+          <koheishingai-side-panel></koheishingai-side-panel>
+        </template>
+      </demo-snippet>
+      <h3>koheishingai-filter</h3>
+      <demo-snippet class="main">
+        <template>
+          <koheishingai-filter></koheishingai-filter>
+        </template>
+      </demo-snippet>      
       <h3>koheishingai-about-main</h3>
       <demo-snippet class="main">
         <template>

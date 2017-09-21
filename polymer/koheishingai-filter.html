@@ -1,0 +1,83 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="koheishingai-filter">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host h2 {
+        margin: 0px;
+        margin-bottom: 14px;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+      }
+      :host li {
+        height: 20px;
+        margin-bottom: 16px;
+      }
+      :host li > h3 {
+        position: relative;
+        display: inline-block;
+        margin: 0 auto;
+        min-width: 20px;
+        min-height: 20px;
+        margin-left: 35px;
+        margin-right: 16px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 300;
+        border-left: 2px solid transparent;
+        -webkit-box-sizing: border-box;
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+        color: #00a2df;
+        font-family: 'Roboto', sans-serif;
+      }
+      @media only screen and (max-width: 840px) {  
+      }
+    </style>
+    <section>
+      <h2>Filter</h2>
+      <ul>
+        <template is="dom-repeat" items="{{menus}}">
+          <li><h3>{{item.name}}</h3></li>
+        </template>
+      </ul>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-filter`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiFilter extends Polymer.Element {
+      static get is() { return 'koheishingai-filter'; }
+      constructor() {
+        super();
+        this.menus = [
+          {name: 'About', path: '/about', selected: ('/about' == location.pathname)},
+          {name: 'Article', path: '/article', selected: ('/article' == location.pathname)},
+          {name: 'Featured', path: '/', selected: ('/' == location.pathname)}
+        ];
+      }
+    }
+    window.customElements.define(KoheishingaiFilter.is, KoheishingaiFilter);
+  </script>
+</dom-module>

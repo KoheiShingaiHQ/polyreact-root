@@ -1,0 +1,56 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/koheishingai-filter.html">
+
+<dom-module id="koheishingai-side-panel">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host section {
+        position: var(--koheishingai-side-panel-position, absolute);
+        right: 0px;
+        margin: 0px;
+        margin-top: 0px;
+        width: 256px;
+        height: var(--koheishingai-side-panel-height, calc(100% - 64px));
+        padding: 20px 20px 20px 24px;
+        border-left: 1px solid #e6e6e6;
+      }
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+    <section>
+      <koheishingai-filter></koheishingai-filter>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-side-panel`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiSidePanel extends Polymer.Element {
+      static get is() { return 'koheishingai-side-panel'; }
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: 'koheishingai'
+          },
+          path: {
+            type: String,
+            value: ''          
+          }
+        };
+      }
+    }
+
+    window.customElements.define(KoheishingaiSidePanel.is, KoheishingaiSidePanel);
+  </script>
+</dom-module>
