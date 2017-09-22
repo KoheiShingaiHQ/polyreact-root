@@ -1,64 +1,57 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
 
-<dom-module id="koheishingai-filter">
+<dom-module id="koheishingai-check-box">
   <template>
     <style>
       :host * {
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
-      :host h2 {
-        margin: 0px;
-        margin-bottom: 14px;
-        color: rgba(0, 0, 0, 0.54);
-        font-size: 14px;
-        font-weight: bold;
-        font-family: 'Roboto', sans-serif;
-      }
-      :host ul {
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-      }
-      :host li {
+      :host div {
+        display: inline-block;
+        top: 0;
+        left: 0;
+        width: 20px;
         height: 20px;
-        margin-bottom: 16px;
+        margin-left: 4px;
+        border-width: 2px;
+        border-style: solid;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        background-color: transparent;
+        border-color: transparent;
+      }
+      :host div > svg {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        margin-left: -4px;
+        margin-top: -4px;
+        cursor: pointer;
+        fill: #00a2df;
       }
       @media only screen and (max-width: 840px) {  
       }
     </style>
-    <section>
-      <h2>Filter</h2>
-      <ul>
-        <template is="dom-repeat" items="{{menus}}">
-          <li>
-          
-          </li>
-        </template>
-      </ul>
-    </section>
+    <div>
+      <svg height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+      </svg>
+    </div>
   </template>
-
   <script>
     /**
-     * `koheishingai-filter`
+     * `koheishingai-check-box`
      * 
      *
      * @customElement
      * @polymer
      * @demo demo/index.html
      */
-    class KoheishingaiFilter extends Polymer.Element {
-      static get is() { return 'koheishingai-filter'; }
-      constructor() {
-        super();
-        this.menus = [
-          {name: 'About', path: '/about', selected: ('/about' == location.pathname)},
-          {name: 'Article', path: '/article', selected: ('/article' == location.pathname)},
-          {name: 'Featured', path: '/', selected: ('/' == location.pathname)}
-        ];
-      }
+    class KoheishingaiCheckBox extends Polymer.Element {
+      static get is() { return 'koheishingai-check-box'; }
     }
-    window.customElements.define(KoheishingaiFilter.is, KoheishingaiFilter);
+    window.customElements.define(KoheishingaiCheckBox.is, KoheishingaiCheckBox);
   </script>
 </dom-module>

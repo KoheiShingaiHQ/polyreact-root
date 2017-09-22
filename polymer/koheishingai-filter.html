@@ -1,4 +1,5 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/koheishingai-check-box.html">
 
 <dom-module id="koheishingai-filter">
   <template>
@@ -23,10 +24,12 @@
       :host li {
         height: 20px;
         margin-bottom: 16px;
+        margin-top: -24px;
+        transform: var(--koheishingai-filter-transform, translateY(-6px));
       }
       :host li > h3 {
-        position: relative;
         display: inline-block;
+        position: relative;
         margin: 0 auto;
         min-width: 20px;
         min-height: 20px;
@@ -52,6 +55,7 @@
       <h2>Filter</h2>
       <ul>
         <template is="dom-repeat" items="{{menus}}">
+          <koheishingai-check-box></koheishingai-check-box>
           <li><h3>{{item.name}}</h3></li>
         </template>
       </ul>

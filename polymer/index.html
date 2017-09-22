@@ -19,6 +19,7 @@
     <link rel="import" href="koheishingai-article-main.html">
     <link rel="import" href="koheishingai-side-panel.html">
     <link rel="import" href="koheishingai-filter.html">
+    <link rel="import" href="koheishingai-check-box.html">
     <link rel="import" href="koheishingai-contents-full.html">
     <link rel="import" href="koheishingai-contents-half.html">
     <link rel="import" href="koheishingai-content.html">
@@ -36,6 +37,7 @@
           --koheishingai-footer-margin-top: 0px;
           --koheishingai-side-panel-position: relative;
           --koheishingai-side-panel-height: 100%;
+          --koheishingai-filter-transform: translateY(1px);
         }
         h3 {
           color: #696969;
@@ -106,12 +108,16 @@
           <koheishingai-side-panel></koheishingai-side-panel>
         </template>
       </demo-snippet>
-      <h3>koheishingai-filter</h3>
-      <demo-snippet class="main">
+      <demo-snippet class="child">
         <template>
           <koheishingai-filter></koheishingai-filter>
         </template>
-      </demo-snippet>      
+      </demo-snippet>
+      <demo-snippet class="child">
+        <template>
+          <koheishingai-check-box></koheishingai-check-box>
+        </template>
+      </demo-snippet>
       <h3>koheishingai-about-main</h3>
       <demo-snippet class="main">
         <template>

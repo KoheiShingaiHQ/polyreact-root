@@ -28,6 +28,9 @@
         background-size: cover;
         background-position: 50%;
       }
+      :host li > img {
+        display: none;
+      }
       @media only screen and (max-width: 840px) {
       }
     </style>
@@ -35,10 +38,11 @@
         <ul>
           <template is="dom-repeat" items="{{contents}}">
             <li>
-              <div style="background-color:{{item.bg_color}};height:{{item.height}}">
+              <div class$="{{item.id}}" style="background-color:{{item.bg_color}};height:{{item.height}}">
                 <koheishingai-content main="{{item.main}}" sub="{{item.sub}}" color="{{item.color}}"></koheishingai-content>
-                <div style="background-image:{{item.bg_image}};opacity:{{item.opacity}}"></div>
+                <div style="background-image:url({{item.bg_image}});opacity:{{item.opacity}}"></div>
               </div>
+              <img class$="{{item.id}}" src="{{item.bg_image}}" />
             </li>
           </template>
         </ul>
@@ -59,9 +63,9 @@
       constructor() {
         super();
         this.contents = [
-          {color: 'rgba(255, 255, 255, 0.98)', bg_color: '#000', bg_image: 'url(/image/brickframes.png)', opacity: '.66', height: '684px', main: 'Brickframes', sub: 'A new generation of prototyping.'},
-          {color: 'rgba(255, 255, 255, 0.98)', bg_color: '#fff', bg_image: 'url(/image/insta2vec.jpg)', opacity: '.95', height: '440px', main: 'insta2vec', sub: 'Deep learning with Instagram.'},
-          {color: 'rgba(0, 0, 0, 0.98)', bg_color: '#fff', bg_image: 'url(/image/sync_youtube.png)', opacity: '.4',  height: '350px', main: 'Sync YouTube', sub: 'Syncing YouTube with pattern recognition.'}
+          {id: 'brickframes', color: 'rgba(255, 255, 255, 0.98)', bg_color: '#000', bg_image: '/image/brickframes.png', opacity: '.66', height: '684px', main: 'Brickframes', sub: 'A new generation of prototyping.'},
+          {id: 'insta2vec', color: 'rgba(255, 255, 255, 0.98)', bg_color: '#fff', bg_image: '/image/insta2vec.jpg', opacity: '.95', height: '440px', main: 'insta2vec', sub: 'Deep learning with Instagram.'},
+          {id: 'sync_youtube', color: 'rgba(0, 0, 0, 0.98)', bg_color: '#fff', bg_image: '/image/sync_youtube.png', opacity: '.4',  height: '350px', main: 'Sync YouTube', sub: 'Syncing YouTube with pattern recognition.'}
         ];
       }
     }
