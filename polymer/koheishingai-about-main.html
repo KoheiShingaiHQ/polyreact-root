@@ -1,6 +1,5 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/polymer/koheishingai-contents-full.html">
-<link rel="import" href="/polymer/koheishingai-contents-half.html">
+<link rel="import" href="/polymer/koheishingai-contents-square.html">
 
 <dom-module id="koheishingai-about-main">
   <template>
@@ -11,10 +10,10 @@
       }
       :host main {
         position: relative;
-        top: var(--koheishingai-top-main-top, 64px);
+        top: var(--koheishingai-main-top, 64px);
         margin: 0 auto;
-        margin-top: var(--koheishingai-top-main-margin-top, 12px);
-        margin-bottom: var(--koheishingai-top-main-margin-bottom, 24px);
+        margin-top: var(--koheishingai-main-margin-top, 12px);
+        margin-bottom: var(--koheishingai-main-margin-bottom, 68px);
         max-width: 2560px;
         padding: 0px 12px;
       }
@@ -25,7 +24,9 @@
         }
       }
     </style>
-    <main></main>
+    <main>
+        <koheishingai-contents-square></koheishingai-contents-square>
+    </main>
   </template>
 
   <script>

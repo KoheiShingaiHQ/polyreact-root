@@ -1,0 +1,86 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/polymer/koheishingai-content.html">
+
+<dom-module id="koheishingai-contents-square">
+  <template>
+    <style>
+      :host * {
+        box-sizing: border-box;
+      }
+      :host ul {
+        margin: 2px 2px;
+        padding: 0;
+        position: relative;
+        list-style-type: none;
+        overflow: hidden;
+      }
+      :host section li {
+        float: left;
+        display: block;
+        width: calc(100%*(1/3) - 8px);
+        overflow: visible;
+        background: #fafafa;
+        cursor: pointer;
+        margin-left: 8px;
+        margin-bottom: 8px;
+      }
+      :host li > div {
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        overflow: hidden;
+        vertical-align: bottom;
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-background-size: cover;
+        z-index: 1;
+      }
+      @media only screen and (max-width: 840px) {
+        :host section li {
+          width: 100%;
+          border-left: none !important;
+          border-right: none !important;
+        }
+      }
+    </style>
+      <section>
+        <ul>
+          <template is="dom-repeat" items="{{contents}}">
+            <li>
+              <div style="background-color:{{item.bg_color}};"></div>
+            </li>
+          </template>
+        </ul>
+      </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-contents-square`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiContentsSquare extends Polymer.Element {
+      static get is() { return 'koheishingai-contents-square'; }
+      constructor() {
+        super();
+        this.contents = [
+          {bg_color: '#fafafa', main: "tv 4k", sub: 'The 4K HDR era. Now playing.'},
+          {bg_color: '#fafafa', main: "iOS 11", sub: 'Available now.'},
+          {bg_color: '#fafafa', main: "watchOS 4", sub: 'Available now.'},
+          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
+          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
+          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
+          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
+          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
+          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'}
+        ];
+      }
+    }
+    window.customElements.define(KoheishingaiContentsSquare.is, KoheishingaiContentsSquare);
+  </script>
+</dom-module>
