@@ -1,6 +1,6 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="/polymer/koheishingai-content.html">
+<link rel="import" href="/polymer/koheishingai-label.html">
 
 <dom-module id="koheishingai-contents-square">
   <template>
@@ -31,9 +31,11 @@
         padding-top: 100%;
         overflow: hidden;
         vertical-align: bottom;
+        background-color: #fafafa;
         background-repeat: no-repeat;
         background-position: center;
         -webkit-background-size: cover;
+        background-position: 50%;
         z-index: 1;
       }
       @media only screen and (max-width: 840px) {
@@ -48,7 +50,9 @@
         <ul>
           <template is="dom-repeat" items="{{contents}}">
             <li>
-              <div style="background-color:{{item.bg_color}};"></div>
+              <div style="background-image:url({{item.background}})">
+                <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
+              </div>
             </li>
           </template>
         </ul>
@@ -69,15 +73,15 @@
       constructor() {
         super();
         this.contents = [
-          {bg_color: '#fafafa', main: "tv 4k", sub: 'The 4K HDR era. Now playing.'},
-          {bg_color: '#fafafa', main: "iOS 11", sub: 'Available now.'},
-          {bg_color: '#fafafa', main: "watchOS 4", sub: 'Available now.'},
-          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
-          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
-          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
-          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
-          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'},
-          {bg_color: '#fafafa', main: "Last Chance.", sub: 'Buy Mac for college. Get Beats.'}
+          {main: "LinkedIn", background: '/image/linkedin.jpg'},
+          {main: "GitHub", background: '/image/github.jpg'},
+          {main: "Prototyping", background: '/image/prototyping.png'},
+          {main: "Java", background: '/image/java.png'},
+          {main: "UI/UX", background: '/image/uiux.jpg'},
+          {main: "Statistics", background: '/image/statistics.png'},
+          {main: "Machine Learning", background: '/image/svm.png'},
+          {main: "Certification", background: '/image/certificate.jpeg'},
+          {main: "Active", background: '/image/running.jpg'}
         ];
       }
     }

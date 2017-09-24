@@ -24,6 +24,7 @@
     <link rel="import" href="koheishingai-contents-half.html">
     <link rel="import" href="koheishingai-contents-square.html">
     <link rel="import" href="koheishingai-content.html">
+    <link rel="import" href="koheishingai-label.html">
     <link rel="import" href="koheishingai-footer.html">
     <link rel="import" href="koheishingai-footer-section.html">
     <custom-style>
@@ -34,11 +35,11 @@
           --koheishingai-main-top: 0px;
           --koheishingai-main-margin-top: 0px;
           --koheishingai-main-margin-bottom: 0px;
-          --koheishingai-footer-position: relative;
-          --koheishingai-footer-margin-top: 0px;
           --koheishingai-side-panel-position: relative;
           --koheishingai-side-panel-height: 100%;
           --koheishingai-filter-transform: translateY(1px);
+          --koheishingai-footer-position: relative;
+          --koheishingai-footer-margin-top: 0px;
         }
         h3 {
           color: #696969;
@@ -89,12 +90,12 @@
       </demo-snippet>
       <demo-snippet class="child">
         <template>
-          <koheishingai-content main="iPhone 8" sub="A new generation of iPhone."></koheishingai-content>
+          <koheishingai-content main="iPhone 8" sub="A new generation of iPhone." color="#696969" position="relative"></koheishingai-content>
         </template>
       </demo-snippet>
       <demo-snippet class="child">
         <template>
-          <koheishingai-content main_small="iPhone 8" sub_small="A new generation of iPhone."></koheishingai-content>
+          <koheishingai-content main_small="iPhone 8" sub_small="A new generation of iPhone." color="#696969" position="relative"></koheishingai-content>
         </template>
       </demo-snippet>
       <h3>koheishingai-article-main</h3>
@@ -125,6 +126,17 @@
           <koheishingai-about-main></koheishingai-about-main>
         </template>
       </demo-snippet>
+      <demo-snippet class="child">
+          <template>
+            <koheishingai-contents-square></koheishingai-contents-square>
+          </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+          <template>
+            <koheishingai-label main="iPhone 8" sub="A new generation of iPhone." color="#696969" position="relative"></koheishingai-label>
+          </template>
+      </demo-snippet>
+      <h3>koheishingai-footer</h3>
       <demo-snippet class="main">
         <template>
           <koheishingai-footer></koheishingai-footer>
