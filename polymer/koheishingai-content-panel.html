@@ -19,14 +19,37 @@
         position: var(--koheishingai-content-panel-position, absolute);
         padding: 12px;
       }
+      :host article::-webkit-scrollbar {
+        display: none; 
+      }
       @media only screen and (max-width: 840px) {
       }
     </style>
     <article>
       <koheishingai-article-header title="{{title}}"></koheishingai-article-header>
-      <koheishingai-content-timeline></koheishingai-content-timeline>
-      <koheishingai-content-timeline></koheishingai-content-timeline>
+      <koheishingai-content-timeline year="2016" month="Feb" time="2016-02-01 00:00:00" title="LPIC-1: Linux Server Professional Certification" content="content"></koheishingai-content-timeline>
+      <koheishingai-content-timeline year="2016" month="Feb" time="2016-02-01 00:00:00" title="HTML5 Professional Certification" content="content"></koheishingai-content-timeline>
+      <koheishingai-content-timeline year="2016" month="Jul" time="2016-07-01 00:00:00" title="Japan Statistical Society Certificate" content="content"></koheishingai-content-timeline>
+      <koheishingai-content-timeline year="2016" month="Sep" time="2016-09-01 00:00:00" title="LPIC-2: Linux Server Professional Certification" content="content"></koheishingai-content-timeline>
     </article>
+    <script>
+      var config = {
+        apiKey: "AIzaSyCYc4VRHj7psOSb5C6YT9azc3D9-PTvoIQ",
+        authDomain: "poreact.firebaseapp.com",
+        databaseURL: "https://poreact.firebaseio.com",
+        projectId: "poreact",
+        storageBucket: "poreact.appspot.com",
+        messagingSenderId: "284609783301"
+      };
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+      }
+      var database = firebase.database();
+      var article = database.ref('article/certification');
+      article.on('value', function(snapshot) {
+        console.log(snapshot.val());
+      });
+    </script>
   </template>
 
   <script>

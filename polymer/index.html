@@ -7,6 +7,7 @@
     <title>koheishingai-element top</title>
 
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
     <link rel="import" href="/bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="/bower_components/iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="/bower_components/polymer/lib/elements/dom-if.html">
@@ -40,6 +41,7 @@
           --koheishingai-main-margin-bottom: 0px;
           --koheishingai-content-panel-margin-top: 0px;
           --koheishingai-content-panel-position: relative;
+          --koheishingai-content-timeline-line-before-height: 100px;
           --koheishingai-side-panel-position: relative;
           --koheishingai-side-panel-height: 100%;
           --koheishingai-filter-transform: translateY(1px);
@@ -103,6 +105,22 @@
           <koheishingai-content main_small="iPhone 8" sub_small="A new generation of iPhone." color="#696969" position="relative"></koheishingai-content>
         </template>
       </demo-snippet>
+      <h3>koheishingai-about-main</h3>
+      <demo-snippet class="main">
+        <template>
+          <koheishingai-about-main></koheishingai-about-main>
+        </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+          <template>
+            <koheishingai-contents-square></koheishingai-contents-square>
+          </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+          <template>
+            <koheishingai-label main="iPhone 8" sub="A new generation of iPhone." color="#696969" position="relative"></koheishingai-label>
+          </template>
+      </demo-snippet>
       <h3>koheishingai-article-main</h3>
       <demo-snippet class="main">
         <template>
@@ -139,22 +157,6 @@
         <template>
           <koheishingai-check-box></koheishingai-check-box>
         </template>
-      </demo-snippet>
-      <h3>koheishingai-about-main</h3>
-      <demo-snippet class="main">
-        <template>
-          <koheishingai-about-main></koheishingai-about-main>
-        </template>
-      </demo-snippet>
-      <demo-snippet class="child">
-          <template>
-            <koheishingai-contents-square></koheishingai-contents-square>
-          </template>
-      </demo-snippet>
-      <demo-snippet class="child">
-          <template>
-            <koheishingai-label main="iPhone 8" sub="A new generation of iPhone." color="#696969" position="relative"></koheishingai-label>
-          </template>
       </demo-snippet>
       <h3>koheishingai-footer</h3>
       <demo-snippet class="main">
