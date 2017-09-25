@@ -29,15 +29,15 @@
       :host section li:nth-child(even) {
         border-left: 6px solid #fff;
       }
-      :host section li:nth-last-child(0) {
-        clear:both;
-      }
       :host li > div {}
       @media only screen and (max-width: 840px) {
         :host section li {
           width: 100%;
           border-left: none !important;
           border-right: none !important;
+        }
+        :host section li:nth-last-child(2) {
+          margin-bottom: -12px;
         }
       }
     </style>

@@ -17,6 +17,8 @@
     <link rel="import" href="koheishingai-top-main.html">
     <link rel="import" href="koheishingai-about-main.html">
     <link rel="import" href="koheishingai-article-main.html">
+    <link rel="import" href="koheishingai-content-panel.html">
+    <link rel="import" href="koheishingai-article-header.html">
     <link rel="import" href="koheishingai-side-panel.html">
     <link rel="import" href="koheishingai-filter.html">
     <link rel="import" href="koheishingai-check-box.html">
@@ -24,6 +26,7 @@
     <link rel="import" href="koheishingai-contents-half.html">
     <link rel="import" href="koheishingai-contents-square.html">
     <link rel="import" href="koheishingai-content.html">
+    <link rel="import" href="koheishingai-content-timeline.html">
     <link rel="import" href="koheishingai-label.html">
     <link rel="import" href="koheishingai-footer.html">
     <link rel="import" href="koheishingai-footer-section.html">
@@ -35,6 +38,8 @@
           --koheishingai-main-top: 0px;
           --koheishingai-main-margin-top: 0px;
           --koheishingai-main-margin-bottom: 0px;
+          --koheishingai-content-panel-margin-top: 0px;
+          --koheishingai-content-panel-position: relative;
           --koheishingai-side-panel-position: relative;
           --koheishingai-side-panel-height: 100%;
           --koheishingai-filter-transform: translateY(1px);
@@ -103,6 +108,21 @@
         <template>
           <koheishingai-article-main></koheishingai-article-main>
         </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+          <template>
+            <koheishingai-content-panel></koheishingai-content-panel>
+          </template>
+      </demo-snippet>
+      <demo-snippet class="child">
+          <template>
+            <koheishingai-article-header title="Certification"></koheishingai-article-header>
+          </template>
+      </demo-snippet>
+      <demo-snippet class="main">
+          <template>
+            <koheishingai-content-timeline></koheishingai-content-timeline>
+          </template>
       </demo-snippet>
       <h3>koheishingai-side-panel</h3>
       <demo-snippet class="main">

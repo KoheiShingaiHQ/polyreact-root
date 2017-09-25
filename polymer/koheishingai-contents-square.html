@@ -18,12 +18,15 @@
       :host section li {
         float: left;
         display: block;
-        width: calc(100%*(1/3) - 8px);
+        width: calc(100%*(1/3) - 5.4px);
         overflow: visible;
         background: #fafafa;
         cursor: pointer;
         margin-left: 8px;
         margin-bottom: 8px;
+      }
+      :host section li:nth-child(3n - 2) {
+        margin-left: 0px;
       }
       :host li > div {
         position: relative;
@@ -38,11 +41,25 @@
         background-position: 50%;
         z-index: 1;
       }
+      :host li > div > a {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+      }
       @media only screen and (max-width: 840px) {
+        :host section ul {
+          margin: 0px;
+        }
         :host section li {
           width: 100%;
           border-left: none !important;
           border-right: none !important;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+        :host section li:nth-last-child(2) {
+          margin-bottom: 0px;
         }
       }
     </style>
@@ -51,7 +68,9 @@
           <template is="dom-repeat" items="{{contents}}">
             <li>
               <div style="background-image:url({{item.background}})">
-                <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
+                <a target="_blank" href="{{item.href}}">
+                  <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
+                </a>
               </div>
             </li>
           </template>
@@ -73,8 +92,8 @@
       constructor() {
         super();
         this.contents = [
-          {main: "LinkedIn", background: '/image/linkedin.jpg'},
-          {main: "GitHub", background: '/image/github.jpg'},
+          {main: "LinkedIn", background: '/image/linkedin.jpg', href: 'https://www.linkedin.com/in/kohei-shingai-6a414a89/'},
+          {main: "GitHub", background: '/image/github.jpg', href: 'https://github.com/KoheiShingaiHQ'},
           {main: "Prototyping", background: '/image/prototyping.png'},
           {main: "Java", background: '/image/java.png'},
           {main: "UI/UX", background: '/image/uiux.jpg'},

@@ -1,0 +1,56 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+
+<dom-module id="koheishingai-article-header">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        padding: 12px 26px;
+        width: 100%;
+      }
+      :host section h1 {
+        font-size: 43px;
+        letter-spacing: -.5px;
+        line-height: 64px;
+        margin: 0px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 200;
+        color: rgba(0, 0, 0, 0.45);
+        border-bottom: 1px solid #e6e6e6;
+      }
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+    <section>
+      <h1>{{title}}</h1>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-content-panel`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiArticleHeader extends Polymer.Element {
+      static get is() { return 'koheishingai-article-header'; }
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: ''
+          }
+        };
+      }
+    }
+
+    window.customElements.define(KoheishingaiArticleHeader.is, KoheishingaiArticleHeader);
+  </script>
+</dom-module>

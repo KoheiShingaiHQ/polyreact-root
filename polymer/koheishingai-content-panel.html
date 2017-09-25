@@ -1,0 +1,55 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/koheishingai-article-header.html">
+<link rel="import" href="/polymer/koheishingai-content-timeline.html">
+
+<dom-module id="koheishingai-content-panel">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :host article {
+        top: 0px;
+        left: 0px;
+        width: calc(100% - 256px);
+        height: calc(100% - 151px);
+        margin-top: var(--koheishingai-content-panel-margin-top, 64px);
+        overflow-y: auto;
+        position: var(--koheishingai-content-panel-position, absolute);
+        padding: 12px;
+      }
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+    <article>
+      <koheishingai-article-header title="{{title}}"></koheishingai-article-header>
+      <koheishingai-content-timeline></koheishingai-content-timeline>
+      <koheishingai-content-timeline></koheishingai-content-timeline>
+    </article>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-content-panel`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiContentPanel extends Polymer.Element {
+      static get is() { return 'koheishingai-content-panel'; }
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: 'Certification'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(KoheishingaiContentPanel.is, KoheishingaiContentPanel);
+  </script>
+</dom-module>

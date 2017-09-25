@@ -1,0 +1,152 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="koheishingai-content-timeline">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host section {
+        padding: 12px 26px;
+        width: 100%;
+      }
+      :host section time {
+        display: block;
+        padding-right: 100px;
+        position: absolute;
+      }
+      :host section time span {
+        display: block;
+        text-align: right;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+      }
+      :host section time span:first-child {
+        font-size: 0.9em;
+        color: #bdd0db;
+      }
+      :host section time span:last-child {
+        font-size: 2.9em;
+        color: #6cbfee;
+      }
+      :host section .line {
+        width: 40px;
+        height: 40px;
+        font-family: 'ecoico';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        font-size: 1.4em;
+        line-height: 40px;
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+        background: #46a4da;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px #afdcf8;
+        text-align: center;
+        margin-left: 128px;
+        margin-top: 9px;
+      }
+      :host section .line:before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        width: 10px;
+        background: #afdcf8;
+        margin-top: 169px;
+        margin-left: -5px;
+        height: 100%;
+      }
+      :host section .content {
+        background: #6cbfee;
+        margin: -39px 0 0 199px;
+        color: #fff;
+        padding: 2em;
+        font-size: 1.2em;
+        font-weight: 300;
+        line-height: 1.4;
+        position: relative;
+        border-radius: 5px;
+      }
+      :host section .content:after {
+        right: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-right-color: #6cbfee;
+        border-width: 10px;
+        top: 10px;
+      }
+      :host section .content h2 {
+        margin-top: 0px;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.4);
+      }
+      @media only screen and (max-width: 840px) {
+      }
+    </style>
+    <section>
+      <time class="cbp_tmtime" datetime="2013-04-10 18:30">
+        <span>2016</span>
+        <span>4/10</span>
+      </time>
+      <div class="line"></div>
+      <div class="content">
+        <h2>Ricebean black-eyed pea</h2>
+        <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape radish bush tomato ricebean black-eyed pea maize eggplant. Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato summer purslane salsify fennel horseradish dulse. Winter purslane garbanzo artichoke broccoli lentil corn okra silver beet celery quandong. Plantain salad beetroot bunya nuts black-eyed pea collard greens radish water spinach gourd chicory prairie turnip avocado sierra leone bologi.</p>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-content-timeline`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiContentTimeline extends Polymer.Element {
+      static get is() { return 'koheishingai-content-timeline'; }
+      static get properties() {
+        return {
+          main: {
+            type: String,
+            value: ''
+          },
+          sub: {
+            type: String,
+            value: ''
+          },
+          main_small: {
+            type: String,
+            value: ''
+          },
+          sub_small: {
+            type: String,
+            value: ''
+          },
+          color: {
+            type: String,
+            value: ''
+          },
+          position: {
+            type: String,
+            value: 'absolute'
+          }
+        };
+      }
+    }
+    window.customElements.define(KoheishingaiContentTimeline.is, KoheishingaiContentTimeline);
+  </script>
+</dom-module>
