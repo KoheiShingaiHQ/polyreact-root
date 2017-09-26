@@ -8,7 +8,7 @@ class Article extends Component {
   }
   render() {
     return (
-      <koheishingai-article-main params={this.state.params}></koheishingai-article-main>
+      <koheishingai-article-main params={this.state.params.split("-").join(" ")}></koheishingai-article-main>
     );
   }
 }

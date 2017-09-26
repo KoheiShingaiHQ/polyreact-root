@@ -1,5 +1,6 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="/polymer/koheishingai-label.html">
 
 <dom-module id="koheishingai-contents-square">
@@ -68,9 +69,16 @@
           <template is="dom-repeat" items="{{contents}}">
               <li>
                 <div style="background-image:url({{item.background}})">
-                  <a href="/article/{{item.href}}">
-                    <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
-                  </a>
+                  <template is="dom-if" if="{{item.blank}}">
+                    <a target="_blank" href="{{item.href}}">
+                      <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
+                    </a>
+                  </template>
+                  <template is="dom-if" if="{{!item.blank}}">
+                    <a href="/article/{{item.href}}">
+                      <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
+                    </a>
+                  </template>
                 </div>
               </li>
           </template>
@@ -92,15 +100,15 @@
       constructor() {
         super();
         this.contents = [
-          {main: "LinkedIn", background: '/image/linkedin.jpg', href: 'https://www.linkedin.com/in/kohei-shingai-6a414a89/'},
-          {main: "GitHub", background: '/image/github.jpg', href: 'https://github.com/KoheiShingaiHQ'},
-          {main: "Prototyping", background: '/image/prototyping.png'},
-          {main: "Java", background: '/image/java.png'},
-          {main: "UI/UX", background: '/image/uiux.jpg'},
-          {main: "Statistics", background: '/image/statistics.png'},
-          {main: "Machine Learning", background: '/image/svm.png'},
-          {main: "Certification", background: '/image/certificate.jpeg', href: "certification"},
-          {main: "Active", background: '/image/running.jpg'}
+          {main: "LinkedIn", background: '/image/linkedin.jpg', href: 'https://www.linkedin.com/in/kohei-shingai-6a414a89/', blank: true},
+          {main: "GitHub", background: '/image/github.jpg', href: 'https://github.com/KoheiShingaiHQ', blank: true},
+          {main: "Prototyping", background: '/image/prototyping.png', blank: false},
+          {main: "Java", background: '/image/java.png', href: "java-career", blank: false},
+          {main: "UI/UX", background: '/image/uiux.jpg', blank: false},
+          {main: "Statistics", background: '/image/statistics.png', blank: false},
+          {main: "Machine Learning", background: '/image/svm.png', blank: false},
+          {main: "Certification", background: '/image/certificate.jpeg', href: "certification", blank: false},
+          {main: "Active", background: '/image/running.jpg', blank: false}
         ];
       }
     }
