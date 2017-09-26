@@ -1,7 +1,7 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/polymer/koheishingai-check-box.html">
 
-<dom-module id="koheishingai-filter">
+<dom-module id="koheishingai-side-related">
   <template>
     <style>
       :host * {
@@ -26,7 +26,7 @@
         height: 20px;
         margin-bottom: 16px;
         margin-top: -24px;
-        transform: var(--koheishingai-filter-transform, translateY(-6px));
+        transform: var(--koheishingai-side-related-transform, translateY(-6px));
       }
       :host li > h3 {
         display: inline-block;
@@ -53,7 +53,7 @@
       }
     </style>
     <section>
-      <h2>Filter</h2>
+      <h2>Related</h2>
       <ul>
         <template is="dom-repeat" items="{{menus}}">
           <koheishingai-check-box></koheishingai-check-box>
@@ -65,24 +65,24 @@
 
   <script>
     /**
-     * `koheishingai-filter`
+     * `koheishingai-side-related`
      * 
      *
      * @customElement
      * @polymer
      * @demo demo/index.html
      */
-    class KoheishingaiFilter extends Polymer.Element {
-      static get is() { return 'koheishingai-filter'; }
+    class KoheishingaiSideRelated extends Polymer.Element {
+      static get is() { return 'koheishingai-side-related'; }
       constructor() {
         super();
         this.menus = [
-          {name: 'About', path: '/about', selected: ('/about' == location.pathname)},
-          {name: 'Article', path: '/article', selected: ('/article' == location.pathname)},
-          {name: 'Featured', path: '/', selected: ('/' == location.pathname)}
+          {name: 'About', path: '/about'},
+          {name: 'Article', path: '/article'},
+          {name: 'Featured', path: '/'}
         ];
       }
     }
-    window.customElements.define(KoheishingaiFilter.is, KoheishingaiFilter);
+    window.customElements.define(KoheishingaiSideRelated.is, KoheishingaiSideRelated);
   </script>
 </dom-module>

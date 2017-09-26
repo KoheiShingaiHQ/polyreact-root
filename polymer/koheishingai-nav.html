@@ -59,7 +59,7 @@
       constructor() {
         super();
         this.menus = [
-          {name: 'Article', path: '/article', selected: ('/article' == location.pathname)},
+          {name: 'Article', path: '/article', selected: (location.pathname.indexOf('/article') != -1)},
           {name: 'About', path: '/about', selected: ('/about' == location.pathname)},
           {name: 'Featured', path: '/', selected: ('/' == location.pathname)}
         ];

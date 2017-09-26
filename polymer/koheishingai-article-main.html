@@ -26,8 +26,8 @@
       }
     </style>
     <main>
-      <koheishingai-content-panel></koheishingai-content-panel>
-      <koheishingai-side-panel></koheishingai-side-panel>
+      <koheishingai-content-panel params="{{params}}"></koheishingai-content-panel>
+      <koheishingai-side-panel params="{{params}}"></koheishingai-side-panel>
     </main>
   </template>
 
@@ -42,6 +42,14 @@
      */
     class KoheishingaiArticleMain extends Polymer.Element {
       static get is() { return 'koheishingai-article-main'; }
+      static get properties() {
+        return {
+          params: {
+            type: String,
+            value: ''
+          }
+        };
+      }
     }
     window.customElements.define(KoheishingaiArticleMain.is, KoheishingaiArticleMain);
   </script>

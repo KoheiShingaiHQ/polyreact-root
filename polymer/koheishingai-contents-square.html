@@ -66,13 +66,13 @@
       <section>
         <ul>
           <template is="dom-repeat" items="{{contents}}">
-            <li>
-              <div style="background-image:url({{item.background}})">
-                <a target="_blank" href="{{item.href}}">
-                  <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
-                </a>
-              </div>
-            </li>
+              <li>
+                <div style="background-image:url({{item.background}})">
+                  <a href="/article/{{item.href}}">
+                    <koheishingai-label main="{{item.main}}" sub="{{item.sub}}"></koheishingai-label>
+                  </a>
+                </div>
+              </li>
           </template>
         </ul>
       </section>
@@ -99,7 +99,7 @@
           {main: "UI/UX", background: '/image/uiux.jpg'},
           {main: "Statistics", background: '/image/statistics.png'},
           {main: "Machine Learning", background: '/image/svm.png'},
-          {main: "Certification", background: '/image/certificate.jpeg'},
+          {main: "Certification", background: '/image/certificate.jpeg', href: "certification"},
           {main: "Active", background: '/image/running.jpg'}
         ];
       }

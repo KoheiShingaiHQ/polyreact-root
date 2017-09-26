@@ -1,5 +1,6 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/polymer/koheishingai-filter.html">
+<link rel="import" href="/polymer/koheishingai-side-filter.html">
+<link rel="import" href="/polymer/koheishingai-side-related.html">
 
 <dom-module id="koheishingai-side-panel">
   <template>
@@ -21,9 +22,22 @@
       @media only screen and (max-width: 840px) {
       }
     </style>
-    <section>
-      <koheishingai-filter></koheishingai-filter>
-    </section>
+    <section id="side"></section>
+    <script>
+      var articleMain = document.querySelector('koheishingai-article-main').shadowRoot;
+      var sidePanelTag = articleMain.querySelector('koheishingai-side-panel').shadowRoot;
+      var sidePanel = sidePanelTag.getElementById("side");
+      var database = firebase.database();
+      var side = database.ref(location.pathname + "/side");
+      side.on('value', function(snapshot) {
+        var val = snapshot.val();
+        for (i in val) {
+          var data = val[i];
+          var element = document.createElement("koheishingai-side-" + i);
+          sidePanel.appendChild(element);
+        }
+      });
+    </script>
   </template>
 
   <script>

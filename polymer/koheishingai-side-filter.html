@@ -1,0 +1,88 @@
+<link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/polymer/koheishingai-check-box.html">
+
+<dom-module id="koheishingai-side-filter">
+  <template>
+    <style>
+      :host * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+      :host h2 {
+        margin: 0px;
+        margin-bottom: 14px;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+      }
+      :host ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+      }
+      :host li {
+        height: 20px;
+        margin-bottom: 16px;
+        margin-top: -24px;
+        transform: var(--koheishingai-side-filter-transform, translateY(-6px));
+      }
+      :host li > h3 {
+        display: inline-block;
+        position: relative;
+        margin: 0 auto;
+        min-width: 20px;
+        min-height: 20px;
+        margin-left: 35px;
+        margin-right: 16px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 300;
+        border-left: 2px solid transparent;
+        -webkit-box-sizing: border-box;
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+        color: #00a2df;
+        font-family: 'Roboto', sans-serif;
+      }
+      @media only screen and (max-width: 840px) {  
+      }
+    </style>
+    <section>
+      <h2>Filter</h2>
+      <ul>
+        <template is="dom-repeat" items="{{menus}}">
+          <koheishingai-check-box></koheishingai-check-box>
+          <li><h3>{{item.name}}</h3></li>
+        </template>
+      </ul>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * `koheishingai-side-filter`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class KoheishingaiSideFilter extends Polymer.Element {
+      static get is() { return 'koheishingai-side-filter'; }
+      constructor() {
+        super();
+        this.menus = [
+          {name: 'About', path: '/about'},
+          {name: 'Article', path: '/article'},
+          {name: 'Featured', path: '/'}
+        ];
+      }
+    }
+    window.customElements.define(KoheishingaiSideFilter.is, KoheishingaiSideFilter);
+  </script>
+</dom-module>

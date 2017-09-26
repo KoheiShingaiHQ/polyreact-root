@@ -25,29 +25,25 @@
       @media only screen and (max-width: 840px) {
       }
     </style>
-    <article>
-      <koheishingai-article-header title="{{title}}"></koheishingai-article-header>
-      <koheishingai-content-timeline year="2016" month="Feb" time="2016-02-01 00:00:00" title="LPIC-1: Linux Server Professional Certification" content="content"></koheishingai-content-timeline>
-      <koheishingai-content-timeline year="2016" month="Feb" time="2016-02-01 00:00:00" title="HTML5 Professional Certification" content="content"></koheishingai-content-timeline>
-      <koheishingai-content-timeline year="2016" month="Jul" time="2016-07-01 00:00:00" title="Japan Statistical Society Certificate" content="content"></koheishingai-content-timeline>
-      <koheishingai-content-timeline year="2016" month="Sep" time="2016-09-01 00:00:00" title="LPIC-2: Linux Server Professional Certification" content="content"></koheishingai-content-timeline>
+    <article id="article">
+      <koheishingai-article-header title="{{params}}"></koheishingai-article-header>
     </article>
     <script>
-      var config = {
-        apiKey: "AIzaSyCYc4VRHj7psOSb5C6YT9azc3D9-PTvoIQ",
-        authDomain: "poreact.firebaseapp.com",
-        databaseURL: "https://poreact.firebaseio.com",
-        projectId: "poreact",
-        storageBucket: "poreact.appspot.com",
-        messagingSenderId: "284609783301"
-      };
-      if (!firebase.apps.length) {
-        firebase.initializeApp(config);
-      }
+      var articleMain = document.querySelector('koheishingai-article-main').shadowRoot;
+      var contentPanelTag = articleMain.querySelector('koheishingai-content-panel').shadowRoot;
+      var contentPanel = contentPanelTag.getElementById("article");
       var database = firebase.database();
-      var article = database.ref('article/certification');
+      var article = database.ref(location.pathname + "/content");
       article.on('value', function(snapshot) {
-        console.log(snapshot.val());
+        var val = snapshot.val(); 
+        for (i in val) {
+          var data = val[i];
+          var element = document.createElement("koheishingai-content-" + data.type);
+          for (j in data) {
+            element[j] = data[j];
+          }
+          contentPanel.appendChild(element);
+        }
       });
     </script>
   </template>
@@ -65,14 +61,13 @@
       static get is() { return 'koheishingai-content-panel'; }
       static get properties() {
         return {
-          title: {
+          params: {
             type: String,
-            value: 'Certification'
+            value: ''
           }
         };
       }
     }
-
     window.customElements.define(KoheishingaiContentPanel.is, KoheishingaiContentPanel);
   </script>
 </dom-module>

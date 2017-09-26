@@ -8,6 +8,19 @@
 
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyCYc4VRHj7psOSb5C6YT9azc3D9-PTvoIQ",
+        authDomain: "poreact.firebaseapp.com",
+        databaseURL: "https://poreact.firebaseio.com",
+        projectId: "poreact",
+        storageBucket: "poreact.appspot.com",
+        messagingSenderId: "284609783301"
+      };
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+      }
+    </script>
     <link rel="import" href="/bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="/bower_components/iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="/bower_components/polymer/lib/elements/dom-if.html">
@@ -21,7 +34,8 @@
     <link rel="import" href="koheishingai-content-panel.html">
     <link rel="import" href="koheishingai-article-header.html">
     <link rel="import" href="koheishingai-side-panel.html">
-    <link rel="import" href="koheishingai-filter.html">
+    <link rel="import" href="koheishingai-side-filter.html">
+    <link rel="import" href="koheishingai-side-related.html">
     <link rel="import" href="koheishingai-check-box.html">
     <link rel="import" href="koheishingai-contents-full.html">
     <link rel="import" href="koheishingai-contents-half.html">
@@ -44,7 +58,7 @@
           --koheishingai-content-timeline-line-before-height: 100px;
           --koheishingai-side-panel-position: relative;
           --koheishingai-side-panel-height: 100%;
-          --koheishingai-filter-transform: translateY(1px);
+          --koheishingai-side-filter-transform: translateY(1px);
           --koheishingai-footer-position: relative;
           --koheishingai-footer-margin-top: 0px;
         }
@@ -129,11 +143,6 @@
       </demo-snippet>
       <demo-snippet class="child">
           <template>
-            <koheishingai-content-panel></koheishingai-content-panel>
-          </template>
-      </demo-snippet>
-      <demo-snippet class="child">
-          <template>
             <koheishingai-article-header title="Certification"></koheishingai-article-header>
           </template>
       </demo-snippet>
@@ -150,7 +159,7 @@
       </demo-snippet>
       <demo-snippet class="child">
         <template>
-          <koheishingai-filter></koheishingai-filter>
+          <koheishingai-side-filter></koheishingai-side-filter>
         </template>
       </demo-snippet>
       <demo-snippet class="child">

@@ -10,7 +10,8 @@ class App extends Component {
       <div className="App">
         <koheishingai-header title="koheishingai"></koheishingai-header>
         <Route exact path="/" component={Featured} />
-        <Route exact path="/article" component={Article} />
+        <Route exact path="/article" component={Article} /> 
+        <Route exact path="/article/:id" component={Article} />
         <Route exact path="/about" component={About} />
         <koheishingai-footer></koheishingai-footer>
       </div>

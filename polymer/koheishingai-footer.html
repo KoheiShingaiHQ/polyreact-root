@@ -47,7 +47,7 @@
         return {
           isStatic: {
             type: String,
-            value: (location.pathname != '/article')
+            value: (location.pathname.indexOf('/article') == -1)
           }
         };
       }

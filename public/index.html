@@ -6,6 +6,19 @@
     <meta name="theme-color" content="#000000">
     <script src="/polymer/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyCYc4VRHj7psOSb5C6YT9azc3D9-PTvoIQ",
+        authDomain: "poreact.firebaseapp.com",
+        databaseURL: "https://poreact.firebaseio.com",
+        projectId: "poreact",
+        storageBucket: "poreact.appspot.com",
+        messagingSenderId: "284609783301"
+      };
+      if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+      }
+    </script>
     <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-if.html">
     <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
     <link rel="import" href="/polymer/koheishingai-header.html">
