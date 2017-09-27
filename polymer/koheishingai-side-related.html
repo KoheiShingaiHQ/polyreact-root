@@ -51,10 +51,11 @@
       <ul id="related"></ul>
     </section>
     <script>
+      var langStorage = localStorage.language.substring(0, 2) || 'en';
       var sideRelatedTag = sidePanel.querySelector('koheishingai-side-related').shadowRoot;
       var sideRelated = sideRelatedTag.getElementById("related");
       var database = firebase.database();
-      var related = database.ref(location.pathname + "/side_"+ localStorage.language.substring(0, 2) +"/related");
+      var related = database.ref(location.pathname + "/side_"+ langStorage +"/related");
       related.on('value', function(snapshot) {
         var val = snapshot.val();
         for (i in val) {
@@ -63,9 +64,7 @@
           if (data.indexOf(':::') != -1) {
             element["title"] = data.split(":::")[0].split('-').join(' ');
             element["href"] = data.split(":::")[1];
-            if (localStorage.language !== "") {
-              element["language"] = localStorage.language.substring(0, 2);
-            }
+            element["language"] = langStorage;
             if (data.indexOf('http') != -1) {
               element["target"] = '_target';
             }

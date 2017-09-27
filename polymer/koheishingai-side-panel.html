@@ -26,19 +26,18 @@
     </style>
     <section id="side"></section>
     <script>
+      var langStorage = localStorage.language.substring(0, 2) || 'en';
       var articleMain = document.querySelector('koheishingai-article-main').shadowRoot;
       var sidePanelTag = articleMain.querySelector('koheishingai-side-panel').shadowRoot;
       var sidePanel = sidePanelTag.getElementById("side");
       var database = firebase.database();
-      var side = database.ref(location.pathname + "/side_" + localStorage.language.substring(0, 2));
+      var side = database.ref(location.pathname + "/side_" + langStorage);
       side.on('value', function(snapshot) {
         var val = snapshot.val();
         for (i in val) {
           var data = val[i];
           var element = document.createElement("koheishingai-side-" + i);
-          if (localStorage.language !== "") {
-            element["language"] = localStorage.language.substring(0, 2);
-          }
+          element["language"] = langStorage;
           sidePanel.appendChild(element);
         }
       });

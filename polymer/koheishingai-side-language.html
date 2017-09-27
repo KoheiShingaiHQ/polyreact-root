@@ -91,6 +91,13 @@
         cursor: pointer;
         font-family: 'Roboto', sans-serif;
       }
+      :host section.en span.text > div {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja span.text > div {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
       :host span.text > div {
         text-transform: capitalize;
       }
@@ -175,9 +182,26 @@
         font-size: 15px;
         text-transform: capitalize;
       }
+      :host section.en #menu > div > div {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja #menu > div > div {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host span.text > div {
+        text-transform: capitalize;
+      }
+      :host #menu > div > div.selected {
+        color: #00a2df;
+        cursor: default;
+      }
       :host #menu > div > div:hover {
         background: rgb(238,238,238);
       }
+      :host #menu > div > div.selected:hover {
+        background: #fff;
+      }      
       @media only screen and (max-width: 840px) {  
       }
     </style>
@@ -197,27 +221,32 @@
       </div>
     </section>
     <script>
+      var langStorage = localStorage.language.substring(0, 2) || 'en';
       var sideLanguageTag = sidePanel.querySelector('koheishingai-side-language').shadowRoot;
       var sideLanguage = sideLanguageTag.getElementById("language");
       var currentLanguage = sideLanguageTag.getElementById("current-language");
       var database = firebase.database();
-      var related = database.ref(location.pathname + "/side_"+ localStorage.language.substring(0, 2) +"/language");
+      var related = database.ref(location.pathname + "/side_"+ langStorage +"/language");
       related.on('value', function(snapshot) {
         var val = snapshot.val();
         for (i in val) {
           var data = val[i];
-          var element = document.createElement("div");
-          if (currentLanguage.innerText == "") {
-            currentLanguage.innerText = data;
+          if (data.indexOf(':::') != -1) {
+            var datas = data;
+            data = datas.split(':::')[0];
+            dataId = datas.split(':::')[1];
+          } else {
+            dataId = data;
           }
-          if (localStorage.language != "" && localStorage.language == data) {
-            currentLanguage.innerText = localStorage.language;
+          var element = document.createElement("div");
+          if (langStorage == dataId.substring(0, 2)) {
+            currentLanguage.innerText = data || 'english';
+            element.classList.add('selected');
           }
           element.classList.add('language');
           element.innerText = data;
-          if (localStorage.language !== "") {
-            element["language"] = localStorage.language.substring(0, 2);
-          }
+          element["language"] = langStorage;
+          element.setAttribute('data', dataId);
           sideLanguage.appendChild(element);
         }
       });
@@ -258,7 +287,7 @@
       select(e) {
         window.menuClicked = true;
         if (e.target.classList[0] == 'language') {
-          localStorage.language = e.target.innerText.toLowerCase();
+          localStorage.language = e.target.getAttribute('data');
           currentLanguage.innerText = "";
           setTimeout(function(){
             menu.style.display = "none";
