@@ -36,13 +36,20 @@
         color: #00a2df;
         font-family: 'Roboto', sans-serif;
       }
+      :host li.en h3 {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host li.ja h3 {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
       :host li h3:first-letter {
         text-transform: capitalize;
       }
       @media only screen and (max-width: 840px) {  
       }
     </style>
-    <li><a target={{target}} href={{href}}><h3>{{title}}</h3></a></li>
+    <li class$="{{language}}"><a target={{target}} href={{href}}><h3>{{title}}</h3></a></li>
   </template>
 
   <script>
@@ -69,6 +76,10 @@
           target: {
             type: String,
             value: ''
+          },
+          language: {
+            type: String,
+            value: 'en'
           }
         };
       }

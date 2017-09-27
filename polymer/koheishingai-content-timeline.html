@@ -24,6 +24,12 @@
         font-family: 'Roboto', sans-serif;
         font-weight: 200;
       }
+      :host section.en time span {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja time span {
+        font-family: 'Noto Sans JP', sans-serif;
+      }
       :host section time span:first-child {
         font-size: 0.9em;
         color: #bdd0db;
@@ -88,11 +94,20 @@
         margin-top: 0px;
         padding: 0 0 10px 0;
         border-bottom: 1px solid rgba(255,255,255,0.4);
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+      :host section.en .content h2 {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host section.ja .content h2 {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
       }
       @media only screen and (max-width: 840px) {
       }
     </style>
-    <section>
+    <section class$="{{language}}">
       <time class="cbp_tmtime" datetime$="{{time}}">
         <span>{{year}}</span>
         <span>{{month}}</span>
@@ -137,6 +152,10 @@
           content: {
             type: String,
             value: ''
+          },
+          language: {
+            type: String,
+            value: 'en'
           }
         };
       }

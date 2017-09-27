@@ -33,12 +33,15 @@
       var contentPanelTag = articleMain.querySelector('koheishingai-content-panel').shadowRoot;
       var contentPanel = contentPanelTag.getElementById("article");
       var database = firebase.database();
-      var article = database.ref(location.pathname + "/content");
+      var article = database.ref(location.pathname + "/content_" + localStorage.language.substring(0, 2));
       article.on('value', function(snapshot) {
         var val = snapshot.val(); 
         for (i in val) {
           var data = val[i];
           var element = document.createElement("koheishingai-content-" + data.type);
+          if (localStorage.language !== "") {
+            element["language"] = localStorage.language.substring(0, 2);
+          }
           for (j in data) {
             element[j] = data[j];
           }

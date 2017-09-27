@@ -17,6 +17,25 @@
         font-weight: 400;
         font-family: 'Roboto', sans-serif;
       }
+      :host h2.en {
+        font-family: 'Roboto', sans-serif;
+      }
+      :host h2.ja {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host section.en h2.en {
+        display: block;
+      }
+      :host section.en h2.ja {
+        display: none;
+      }
+      :host section.ja h2.en {
+        display: none;
+      }
+      :host section.ja h2.ja {
+        display: block;
+      }
       :host .selector {
         display: -webkit-box;
         display: -webkit-flex;
@@ -113,8 +132,8 @@
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        padding-top: 3px;
-        padding-bottom: 3px;
+        padding-top: 4px;
+        padding-bottom: 4px;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -webkit-flex-direction: column;
@@ -156,11 +175,15 @@
         font-size: 15px;
         text-transform: capitalize;
       }
+      :host #menu > div > div:hover {
+        background: rgb(238,238,238);
+      }
       @media only screen and (max-width: 840px) {  
       }
     </style>
-    <section>
-      <h2>Language</h2>
+    <section class$={{language}}>
+      <h2 class="en">Language</h2>
+      <h2 class="ja">言語</h2>
       <div class="selector" on-click="select">
         <span class="text">
           <div id="current-language"></div>
@@ -178,7 +201,7 @@
       var sideLanguage = sideLanguageTag.getElementById("language");
       var currentLanguage = sideLanguageTag.getElementById("current-language");
       var database = firebase.database();
-      var related = database.ref(location.pathname + "/side/language");
+      var related = database.ref(location.pathname + "/side_"+ localStorage.language.substring(0, 2) +"/language");
       related.on('value', function(snapshot) {
         var val = snapshot.val();
         for (i in val) {
@@ -192,6 +215,9 @@
           }
           element.classList.add('language');
           element.innerText = data;
+          if (localStorage.language !== "") {
+            element["language"] = localStorage.language.substring(0, 2);
+          }
           sideLanguage.appendChild(element);
         }
       });
@@ -221,13 +247,22 @@
      */
     class KoheishingaiSideLanguage extends Polymer.Element {
       static get is() { return 'koheishingai-side-language'; }
+      static get properties() {
+        return {
+          language: {
+            type: String,
+            value: 'en'          
+          }
+        };
+      }
       select(e) {
         window.menuClicked = true;
         if (e.target.classList[0] == 'language') {
           localStorage.language = e.target.innerText.toLowerCase();
-          currentLanguage.innerText = e.target.innerText.toLowerCase();
+          currentLanguage.innerText = "";
           setTimeout(function(){
             menu.style.display = "none";
+            location.reload();
           }, 150);
         }
       }
