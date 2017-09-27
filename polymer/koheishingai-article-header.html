@@ -13,6 +13,7 @@
         width: 100%;
       }
       :host section h1 {
+        display: none;
         font-size: 43px;
         letter-spacing: -.5px;
         line-height: 64px;
@@ -22,15 +23,39 @@
         color: rgba(0, 0, 0, 0.45);
         border-bottom: 1px solid #e6e6e6;
       }
+      :host section.en h1 {
+        font-family: "Roboto", sans-serif;
+      }
+      :host section.ja h1 {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
       :host section h1:first-letter {
         text-transform: capitalize;
       }
       @media only screen and (max-width: 840px) {
       }
     </style>
-    <section>
-      <h1>{{title}}</h1>
+    <section id="section">
+      <h1 id="title">{{title}}</h1>
     </section>
+    <script>
+      var articleHeaderTag = contentPanelTag.querySelector('koheishingai-article-header').shadowRoot;
+      var headerSection = articleHeaderTag.getElementById("section");
+      var headerTitle = articleHeaderTag.getElementById("title");
+      console.log(headerTitle);
+      var database = firebase.database();
+      var langStorage = localStorage.language.substring(0, 2) || 'en';
+      var title = database.ref(location.pathname + "/" + langStorage);
+      title.on('value', function(snapshot) {
+        var val = snapshot.val();
+        if (val != "") {
+          headerSection.classList.add(langStorage);
+          headerTitle.innerText = val;
+          headerTitle.style.display = "block";
+        }
+      });
+    </script>
   </template>
 
   <script>
