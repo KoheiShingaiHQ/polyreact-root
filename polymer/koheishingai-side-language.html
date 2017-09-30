@@ -221,7 +221,8 @@
       </div>
     </section>
     <script>
-      var langStorage = localStorage.language.substring(0, 2) || 'en';
+      localStorage.language = localStorage.language || 'english';
+      var langStorage = localStorage.language.substring(0, 2);
       var sideLanguageTag = sidePanel.querySelector('koheishingai-side-language').shadowRoot;
       var sideLanguage = sideLanguageTag.getElementById("language");
       var currentLanguage = sideLanguageTag.getElementById("current-language");

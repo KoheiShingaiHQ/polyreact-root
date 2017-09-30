@@ -45,7 +45,8 @@
       var headerTitle = articleHeaderTag.getElementById("title");
       console.log(headerTitle);
       var database = firebase.database();
-      var langStorage = localStorage.language.substring(0, 2) || 'en';
+      localStorage.language = localStorage.language || 'english';
+      var langStorage = localStorage.language.substring(0, 2);
       var title = database.ref(location.pathname + "/" + langStorage);
       title.on('value', function(snapshot) {
         var val = snapshot.val();
