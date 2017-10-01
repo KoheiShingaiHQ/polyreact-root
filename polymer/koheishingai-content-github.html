@@ -12,93 +12,164 @@
         padding: 12px 26px;
         width: 100%;
       }
-      :host .en h1, :host .en h2, :host .en h3, :host .en h4, :host .en h5, :host .en h6 {
+      :host section.related {
+        height: 0px;
+      }
+      :host section.related.show {
+        height: auto;
+      }
+      :host section.child {
+        padding: 0px;
+        margin-top: 25px;
+        border-left: 2px dashed #d6d6d6;
+        padding-left: 21px;
+        width: 100%;
+        padding-top: 2px;
+        padding-bottom: 15px;
+        background: #fff;
+        display: none;
+        margin-bottom: 18px;
+      }
+      :host .show > section.child {
+        display: block;
+      }
+      :host section.child pre {
+        width: calc(100% - 21px);
+      }
+      :host h1, :host h2, :host h3, :host h4, :host h5, :host h6 {
         margin-top: 24px;
         margin-bottom: 16px;
         font-weight: 600;
         line-height: 1.25;
+        color: rgba(0, 0, 0, 0.45);
+      }
+      :host .en h1, :host .en h2, :host .en h3, :host .en h4, :host .en h5, :host .en h6 {
         font-family: "Roboto", sans-serif;
         font-weight: 200;
-        color: rgba(0, 0, 0, 0.45);
       }
       :host .ja h1, :host .ja h2, :host .ja h3, :host .ja h4, :host .ja h5, :host .ja h6 {
-        margin-top: 24px;
-        margin-bottom: 16px;
-        font-weight: 600;
-        line-height: 1.25;
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: 300;
-        color: rgba(0, 0, 0, 0.45);
+      }
+      :host p {
+        margin-bottom: 0px;
+        font-weight: 300;
+        color: #6f6f6f;
       }
       :host .en p {
-        margin-bottom: 0px;
         font-family: "Roboto", sans-serif;
-        font-weight: 300;
         font-size: 17px;
-        color: #6f6f6f;        
       }
       :host .ja p {
-        margin-bottom: 0px;
+        font-size: 16px;
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: 300;
-        font-size: 16px;
-        color: #6f6f6f;        
+      }
+      :host h1 {
+        padding-bottom: 0.3em;
+        margin-top: 5px;
       }
       :host .en h1 {
-        padding-bottom: 0.3em;
         font-size: 32px;
         border-bottom: 1px dashed #eaecef;
-        margin-top: 5px;
       }
       :host .ja h1 {
-        padding-bottom: 0.3em;
         font-size: 30px;
         border-bottom: 1px dashed #eaecef;
-        margin-top: 5px;
       }
-      :host .en h2 {
+      :host h2 {
         padding-bottom: 0.3em;
-        font-size: 27px;
         margin-top: 28px;
         margin-bottom: 6px;
+      }
+      :host .en h2 {
+        font-size: 27px;
+        margin-top: 28px;
       }
       :host .ja h2 {
         padding-bottom: 0.3em;
         font-size: 25px;
+      }
+      :host h3.repository {
+        position: absolute;
+        right: 70px;
+        transform: translateY(5px);
+        color: #00a2df;
+      }
+      :host .en h3.repository {
+        font-size: 20px;
+      }
+      :host .ja h3.repository {
+        font-size: 15px;
+      }
+      :host .en .ja.repository,
+      :host .ja .en.repository {
+        display: none;
+      }
+      :host h3 {
+        padding-bottom: 0.3em;
         margin-top: 28px;
         margin-bottom: 6px;
       }
       :host .en h3 {
-        padding-bottom: 0.3em;
         font-size: 23px;
-        margin-top: 28px;
-        margin-bottom: 6px;
       }
       :host .ja h3 {
-        padding-bottom: 0.3em;
         font-size: 21px;
-        margin-top: 28px;
-        margin-bottom: 6px;
       }
-      :host .en blockquote {
-        padding: 0 11px;
-        margin-left: 1px;
-        margin-right: 0px;
-        color: #6a737d;
-        font-size: 20px;
-        border-left: 2.5px solid rgb(224, 224, 224);
+      :host .en h3.switch {
+        font-size: 16.5px;
+        color: rgb(255, 141, 53);
+        cursor: pointer;
+        margin-top: 4px;
+      }
+      :host .en h3.switch:before {
+        content: "+";
+        margin-right: 3.5px;
+        margin-left: 0px;
         font-family: "Roboto", sans-serif;
-        font-weight: 300;
       }
-      :host .ja blockquote {
-        padding: 0 11px;
-        margin-left: 1px;
-        margin-right: 0px;
-        color: #6a737d;
-        font-size: 20px;
-        border-left: 2.5px solid rgb(224, 224, 224);
+      :host .ja .show h3.switch:before {
+        content: "-";
+        margin-right: 8px;
+        margin-left: 0px;
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: 300;
+      }
+      :host .ja h3.switch {
+        font-size: 15.5px;
+        color: rgb(255, 141, 53);
+        cursor: pointer;
+        margin-top: 4px;
+      }
+      :host .ja h3.switch:before {
+        content: "+";
+        margin-right: 3.5px;
+        margin-left: 0px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host .en .show h3.switch:before {
+        content: "-";
+        margin-right: 8px;
+        margin-left: 0px;
+        font-family: "Roboto", sans-serif;
+      }
+      :host blockquote {
+        padding: 0 11px;
+        margin-left: 1px;
+        margin-right: 0px;
+        color: #6a737d;
+        border-left: 2.5px solid rgb(224, 224, 224);
+        font-weight: 300;
+      }
+      :host .en blockquote {
+        font-family: "Roboto", sans-serif;
+        font-size: 20px;
+      }
+      :host .ja blockquote {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 16px;
       }
       :host a {
         color: #00a2df;
@@ -140,24 +211,58 @@
       @media only screen and (max-width: 840px) {
       }
     </style>
-    <section id="section" class$="{{language}}"></section>
-    <a target="_blank" href="https://github.com/{{user}}/{{project}}/tree/{{revision}}"><h2 class="repository">See Repository</h2></a>
+    <section class$="{{language}}">
+      <a target="_blank" href="https://github.com/{{user}}/{{project}}/tree/{{revision}}">
+        <h3 class="en repository">See Repository</h3>
+        <h3 class="ja repository">リポジトリを見る</h3>
+      </a>
+      <section id="section"></section>
+      <section id="related-{{revision}}" class="related"></section>
+    </section>
     <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md">
-      console.log("{{revision}}");
       if ("{{language}}" == "en") {
-        var url = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
+        var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
       } else  {
-        var url = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_{{language}}.md";
+        var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_{{language}}.md";
       }
-      var xhr = new XMLHttpRequest;
-      xhr.open('GET', url);
-      xhr.onload = function loaded(){
+      console.log(url1);
+      var xhr1 = new XMLHttpRequest;
+      xhr1.open('GET', url1);
+      xhr1.onload = function loaded1(){
         var contentGithubTag = contentPanelTag.getElementById('{{revision}}').shadowRoot;
         var githubSection = contentGithubTag.getElementById("section");
         var response = marked(this.response).split('<a').join('<a target="_blank"');
         githubSection.innerHTML = response;
       };
-      xhr.send();
+      xhr1.send();
+      var relatedList = "{{related}}".split(",");
+      for (i of relatedList) {
+        if ("{{language}}" == "en") {
+          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_"+ i.split(":::")[0] +".md";
+        } else  {
+          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_"+ i.split(":::")[0] +"_{{language}}.md";
+        }
+        var xhr2 = new XMLHttpRequest;
+        xhr2.open('GET', url2);
+        xhr2.onload = function loaded2(i){
+          var contentGithubTag = contentPanelTag.getElementById('{{revision}}').shadowRoot;
+          var githubRelated = contentGithubTag.getElementById("related-{{revision}}");
+          var element = document.createElement("section");
+          var h3 = document.createElement("h3");
+          h3.classList.add("switch");
+          element.classList.add("child");
+          var response = marked(this.response).split('<a').join('<a target="_blank"');
+          element.innerHTML = response;
+          var title = element.getElementsByTagName("h1")[0].innerText;
+          h3.innerText = title;
+          h3.addEventListener('click', function(){
+            this.parentElement.classList.toggle('show');
+          });
+          githubRelated.appendChild(element);
+          githubRelated.insertBefore(h3, element);
+        }
+        xhr2.send();
+      }
     </script>
   </template>
 

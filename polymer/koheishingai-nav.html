@@ -35,7 +35,7 @@
       <ul>
         <template is="dom-repeat" items="{{menus}}">
           <template is="dom-if" if="{{item.selected}}">
-            <li class="selected">{{item.name}}</li>
+            <a href="{{item.path}}"><li class="selected">{{item.name}}</li></a>
           </template>
           <template is="dom-if" if="{{!item.selected}}">
             <a href="{{item.path}}"><li>{{item.name}}</li></a>
