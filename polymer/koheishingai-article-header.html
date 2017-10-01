@@ -43,7 +43,6 @@
       var articleHeaderTag = contentPanelTag.querySelector('koheishingai-article-header').shadowRoot;
       var headerSection = articleHeaderTag.getElementById("section");
       var headerTitle = articleHeaderTag.getElementById("title");
-      console.log(headerTitle);
       var database = firebase.database();
       localStorage.language = localStorage.language || 'english';
       var langStorage = localStorage.language.substring(0, 2);

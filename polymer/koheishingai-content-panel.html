@@ -1,6 +1,7 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/polymer/koheishingai-article-header.html">
 <link rel="import" href="/polymer/koheishingai-content-timeline.html">
+<link rel="import" href="/polymer/koheishingai-content-github.html">
 
 <dom-module id="koheishingai-content-panel">
   <template>
@@ -37,13 +38,16 @@
       var database = firebase.database();
       var article = database.ref(location.pathname + "/content_" + langStorage);
       article.on('value', function(snapshot) {
-        var val = snapshot.val(); 
+        var val = snapshot.val();
         for (i in val) {
           var data = val[i];
           var element = document.createElement("koheishingai-content-" + data.type);
           element["language"] = langStorage;
           for (j in data) {
             element[j] = data[j];
+            if (j == "revision") {
+              element.setAttribute("id", data[j]);
+            }
           }
           contentPanel.appendChild(element);
         }
