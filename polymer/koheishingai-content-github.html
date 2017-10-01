@@ -1,6 +1,5 @@
 <link rel="import" href="/polymer/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
-
 <dom-module id="koheishingai-content-github">
   <template>
     <style>
@@ -22,7 +21,36 @@
         font-weight: 200;
         color: rgba(0, 0, 0, 0.45);
       }
+      :host .ja h1, :host .ja h2, :host .ja h3, :host .ja h4, :host .ja h5, :host .ja h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.45);
+      }
+      :host .en p {
+        margin-bottom: 0px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        font-size: 17px;
+        color: #6f6f6f;        
+      }
+      :host .ja p {
+        margin-bottom: 0px;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        color: #6f6f6f;        
+      }
       :host .en h1 {
+        padding-bottom: 0.3em;
+        font-size: 32px;
+        border-bottom: 1px dashed #eaecef;
+        margin-top: 5px;
+      }
+      :host .ja h1 {
         padding-bottom: 0.3em;
         font-size: 30px;
         border-bottom: 1px dashed #eaecef;
@@ -30,13 +58,84 @@
       }
       :host .en h2 {
         padding-bottom: 0.3em;
-        font-size: 23px;
-        margin-top: 23px;
+        font-size: 27px;
+        margin-top: 28px;
+        margin-bottom: 6px;
       }
-      blockquote {
-        padding: 0 1em;
+      :host .ja h2 {
+        padding-bottom: 0.3em;
+        font-size: 25px;
+        margin-top: 28px;
+        margin-bottom: 6px;
+      }
+      :host .en h3 {
+        padding-bottom: 0.3em;
+        font-size: 23px;
+        margin-top: 28px;
+        margin-bottom: 6px;
+      }
+      :host .ja h3 {
+        padding-bottom: 0.3em;
+        font-size: 21px;
+        margin-top: 28px;
+        margin-bottom: 6px;
+      }
+      :host .en blockquote {
+        padding: 0 11px;
+        margin-left: 1px;
+        margin-right: 0px;
         color: #6a737d;
-        border-left: 0.25em solid #dfe2e5;
+        font-size: 20px;
+        border-left: 2.5px solid rgb(224, 224, 224);
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+      }
+      :host .ja blockquote {
+        padding: 0 11px;
+        margin-left: 1px;
+        margin-right: 0px;
+        color: #6a737d;
+        font-size: 20px;
+        border-left: 2.5px solid rgb(224, 224, 224);
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+      }
+      :host a {
+        color: #00a2df;
+        text-decoration: none;
+      }
+      :host a:hover {
+        text-decoration: underline;
+      }
+      :host pre {
+        padding: 16.5px;
+        overflow: auto;
+        font-size: 120%;
+        line-height: 1.35;
+        background-color: #f8f8f8;
+        margin-bottom: 0;
+        word-break: normal;
+        margin-top: 0px;
+        color: #545454;
+      }
+      :host code .hljs-comment {
+        opacity: .5;
+      }
+      :host .ja code .hljs-comment {
+        font-size: 82%;
+      }
+      :host p > code {
+        padding: 0;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(27,31,35,0.05);
+        color: #545454;
+      }
+      :host p > code:before, :host p > code:after {
+        letter-spacing: -0.2em;
+        content: "\00a0";
       }
       @media only screen and (max-width: 840px) {
       }
@@ -44,13 +143,19 @@
     <section id="section" class$="{{language}}">
     </section>
     <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md">
-      var url = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
+      console.log("{{revision}}");
+      if ("{{language}}" == "en") {
+        var url = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
+      } else  {
+        var url = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_{{language}}.md";
+      }
       var xhr = new XMLHttpRequest;
       xhr.open('GET', url);
       xhr.onload = function loaded(){
         var contentGithubTag = contentPanelTag.getElementById('{{revision}}').shadowRoot;
         var githubSection = contentGithubTag.getElementById("section");
-        githubSection.innerHTML = marked(this.response);
+        var response = marked(this.response).split('<a').join('<a target="_blank"');
+        githubSection.innerHTML = response;
       };
       xhr.send();
     </script>

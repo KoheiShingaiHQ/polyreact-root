@@ -20,6 +20,16 @@
       }
     </script>
     <script src="https://rawgit.com/chjj/marked/master/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+      var renderer = new marked.Renderer()
+      renderer.code = function(code, language) {
+        return '<pre'+'><code class="hljs">' + hljs.highlightAuto(code).value + '</code></pre>';
+      };
+      marked.setOptions({
+        renderer: renderer,
+      });
+    </script>
     <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-if.html">
     <link rel="import" href="/polymer/bower_components/polymer/lib/elements/dom-repeat.html">
     <link rel="import" href="/polymer/koheishingai-header.html">
