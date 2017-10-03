@@ -131,6 +131,9 @@
       }
       :host .en h3.switch:nth-last-child(2) {
         margin-bottom: 29px;
+      } 
+      :host .ja h3.switch:nth-last-child(2) {
+        margin-bottom: 29px;
       }      
       :host .ja .show h3.switch:before {
         content: "-";
@@ -229,7 +232,7 @@
       if ("{{language}}" == "en") {
         var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
       } else  {
-        var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_{{language}}.md";
+        var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.{{language}}.md";
       }
       console.log(url1);
       var xhr1 = new XMLHttpRequest;
@@ -244,9 +247,9 @@
       var relatedList = "{{related}}".split(",");
       for (i of relatedList) {
         if ("{{language}}" == "en") {
-          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_"+ i.split(":::")[0] +".md";
+          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/readme/"+ i.split(":::")[0] +".md";
         } else  {
-          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README_"+ i.split(":::")[0] +"_{{language}}.md";
+          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/readme/"+ i.split(":::")[0] +".{{language}}.md";
         }
         var xhr2 = new XMLHttpRequest;
         xhr2.open('GET', url2);
