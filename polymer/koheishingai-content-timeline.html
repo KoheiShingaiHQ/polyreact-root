@@ -78,6 +78,9 @@
         line-height: 1.4;
         position: relative;
       }
+      :host section .content:hover {
+        opacity: .8;
+      }
       :host section .content:after {
         right: 100%;
         border: solid transparent;
@@ -90,12 +93,15 @@
         border-width: 10px;
         top: 10px;
       }
+      :host section a {
+        text-decoration: none;
+      }
       :host section .content h2 {
         margin-top: 0px;
         padding: 0 0 10px 0;
         border-bottom: 1px solid rgba(255,255,255,0.4);
         font-family: 'Roboto', sans-serif;
-        font-weight: 400;
+        font-weight: 300;
       }
       :host section.en .content h2 {
         font-family: 'Roboto', sans-serif;
@@ -113,10 +119,12 @@
         <span>{{month}}</span>
       </time>
       <div class="line"></div>
-      <div class="content">
-        <h2>{{title}}</h2>
-        <p>{{content}}</p>
-      </div>
+      <a href="/article/{{article}}">
+        <div class="content">
+          <h2>{{title}}</h2>
+          <p>{{content}}</p>
+        </div>
+      </a>
     </section>
   </template>
 

@@ -36,6 +36,11 @@
       var contentPanelTag = articleMain.querySelector('koheishingai-content-panel').shadowRoot;
       var contentPanel = contentPanelTag.getElementById("article");
       var database = firebase.database();
+      var hue = database.ref(location.pathname + "/hue");
+      hue.on('value', function(snapshot) {
+        var val = snapshot.val();
+        contentPanel.style.filter = "hue-rotate("+ val +"deg)";
+      });
       var article = database.ref(location.pathname + "/content_" + langStorage);
       article.on('value', function(snapshot) {
         var val = snapshot.val();
