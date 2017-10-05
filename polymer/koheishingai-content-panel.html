@@ -54,8 +54,8 @@
               element.setAttribute("id", data[j]);
             }
             if (j == "article") {
-              if (data[j].indexOf(":::") != -1) {
-                element["article"] = data[j][0];
+              if (data[j].indexOf("http") != -1) {
+                element["article"] = data[j];
               } else {
                 element["article"] = "/article/" + data[j];
               }
