@@ -40,13 +40,15 @@
       <section>
         <ul>
           <template is="dom-repeat" items="{{contents}}">
-            <li>
-              <div id$="{{item.id}}" class="loading" style="background-color:{{item.bg_color}};height:{{item.height}}">
-                <koheishingai-content main="{{item.main}}" sub="{{item.sub}}" color="{{item.color}}"></koheishingai-content>
-                <div style="background-image:url({{item.bg_image}});opacity:{{item.opacity}}"></div>
-              </div>
-              <img onload$="loaded('{{item.id}}')" src="{{item.bg_image}}" />
-            </li>
+            <a href="/article/{{item.id}}">
+              <li>
+                <div id$="{{item.id}}" class="loading" style="background-color:{{item.bg_color}};height:{{item.height}}">
+                  <koheishingai-content main="{{item.main}}" sub="{{item.sub}}" color="{{item.color}}"></koheishingai-content>
+                  <div style="background-image:url({{item.bg_image}});opacity:{{item.opacity}}"></div>
+                </div>
+                <img onload$="loaded('{{item.id}}')" src="{{item.bg_image}}" />
+              </li>
+            </a>
           </template>
         </ul>
       </section>
@@ -74,8 +76,8 @@
       constructor() {
         super();
         this.contents = [
-          {id: 'polyreact', color: 'rgba(255, 255, 255, 0.98)', bg_color: '#000', bg_image: '/image/brickframes.png', opacity: '.66', height: '684px', main: 'Polyreact', sub: 'High speed prototyping and web development simultaneously.'},
-          {id: 'sync_youtube', color: 'rgba(255, 255, 255, 0.98)', bg_color: '#000', bg_image: '/image/sync_youtube.jpg', opacity: '.79',  height: '440px', main: 'Sync YouTube', sub: 'Syncing YouTube videos with pattern recognition.'}
+          {id: 'polyreact', color: 'rgba(255, 255, 255, 0.98)', bg_color: '#000', bg_image: '/image/brickframes.png', opacity: '.66', height: '684px', main: 'Polyreact', sub: 'High speed prototyping and Web development.'},
+          {id: 'sync_youtube', color: 'rgba(255, 255, 255, 0.98)', bg_color: '#000', bg_image: '/image/sync_youtube.jpg', opacity: '.79',  height: '426px', main: 'Sync YouTube', sub: 'Syncing YouTube videos with pattern recognition.'}
         ];
       }
     }
