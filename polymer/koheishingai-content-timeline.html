@@ -77,6 +77,7 @@
         font-weight: 300;
         line-height: 1.4;
         position: relative;
+        padding-bottom: 34px;
       }
       :host section .content:hover {
         opacity: .8;
@@ -103,12 +104,21 @@
         font-family: 'Roboto', sans-serif;
         font-weight: 300;
       }
-      :host section.en .content h2 {
+      :host section.en .content p {
+        font-size: 22px;
+      }
+      :host section.ja .content p {
+        font-size: 20px;
+      }      
+      :host section.en .content h2, :host section.en .content p {
         font-family: 'Roboto', sans-serif;
       }
-      :host section.ja .content h2 {
+      :host section.ja .content h2, :host section.ja .content p {
         font-family: 'Noto Sans JP', sans-serif;
         font-weight: 300;
+      }
+      :host section .content p {
+        margin-bottom: 0px;
       }
       @media only screen and (max-width: 840px) {
       }
