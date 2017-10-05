@@ -56,6 +56,7 @@
             if (j == "article") {
               if (data[j].indexOf("http") != -1) {
                 element["article"] = data[j];
+                element["target"] = "_blank";
               } else {
                 element["article"] = "/article/" + data[j];
               }
