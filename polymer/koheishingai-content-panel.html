@@ -53,6 +53,13 @@
             if (j == "revision") {
               element.setAttribute("id", data[j]);
             }
+            if (j == "article") {
+              if (data[j].indexOf(":::") != -1) {
+                element["article"] = data[j][0];
+              } else {
+                element["article"] = "/article/" + data[j];
+              }
+            }
           }
           contentPanel.appendChild(element);
         }
