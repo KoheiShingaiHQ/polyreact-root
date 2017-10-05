@@ -24,6 +24,13 @@
         display: none; 
       }
       @media only screen and (max-width: 840px) {
+        :host article {
+          width: 100%;
+          padding: 0px;
+        }
+        :host section {
+          padding: 12px 12px;
+        }
       }
     </style>
     <article id="article">
@@ -40,6 +47,7 @@
       hue.on('value', function(snapshot) {
         var val = snapshot.val();
         contentPanel.style.filter = "hue-rotate("+ val +"deg)";
+        window.hueReverse = "hue-rotate(-"+ val +"deg)";
       });
       var article = database.ref(location.pathname + "/content_" + langStorage);
       article.on('value', function(snapshot) {
@@ -48,6 +56,7 @@
           var data = val[i];
           var element = document.createElement("koheishingai-content-" + data.type);
           element["language"] = langStorage;
+          element["hue-reverse"] = hueReverse;
           for (j in data) {
             element[j] = data[j];
             if (j == "revision") {

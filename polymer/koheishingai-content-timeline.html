@@ -78,6 +78,7 @@
         line-height: 1.4;
         position: relative;
         padding-bottom: 34px;
+        cursor: pointer;
       }
       :host section .content:hover {
         opacity: .8;
@@ -124,8 +125,52 @@
         max-height: 210px;
         border: 1px solid rgba(255, 255, 255, 0.57);
         margin-top: 12px;
+        max-width: 100%;
       }
       @media only screen and (max-width: 840px) {
+        :host section time {
+          position: relative;
+          width: 100%;
+          padding: 0px;
+        }
+        :host section time span:first-child {
+          font-size: 1.5em;
+          float: left;
+          text-align: left;
+        }
+        :host section.en time span:first-child {
+          font-size: 1em;
+          margin-top: 6px;
+        }
+        :host section time span:last-child {
+          font-size: 1.5em;
+          text-align: left;
+          text-indent: 2px;
+        }
+        :host section.en time span:last-child {
+          text-indent: 3px;
+        }
+        :host section .line:before, :host section .line {
+          display: none;
+        }
+        :host section .content {
+          margin: 0;
+        }
+        :host section .content:after {
+          display: none;
+        }
+        :host section.en .content h2 {
+          font-size: 24px;
+        }
+        :host section.ja .content h2 {
+          font-size: 22px;
+        }
+        :host section.en .content p {
+          font-size: 19px;
+        }
+        :host section.ja .content p {
+          font-size: 17px;
+        }
       }
     </style>
     <section class$="{{language}}">
@@ -138,7 +183,9 @@
         <div class="content">
           <h2>{{title}}</h2>
           <p>{{content}}</p>
-          <img src="{{image}}" />
+          <template is="dom-if" if="{{image}}">
+            <img src="{{image}}" style="filter:{{hue-reverse}}" />
+          </template>
         </div>
       </a>
     </section>
