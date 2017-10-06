@@ -13,6 +13,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "detect-browser": "^2.0.0",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
     "react-scripts": "1.0.13"
