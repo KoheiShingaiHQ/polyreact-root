@@ -233,58 +233,118 @@
       }
     </style>
     <section class$="{{language}}">
-      <a target="_blank" href="https://github.com/{{user}}/{{project}}/tree/{{revision}}">
-        <h3 class="en repository">See Repository</h3>
-        <h3 class="ja repository">リポジトリを見る</h3>
-      </a>
+        <template is="dom-if" if="{{revision}}">
+          <a target="_blank" href="https://github.com/{{user}}/{{project}}/tree/{{revision}}">
+            <h3 class="en repository">See Repository</h3>
+            <h3 class="ja repository">リポジトリを見る</h3>
+          </a>
+        </template>
+        <template is="dom-if" if="{{!revision}}">
+          <a target="_blank" href="https://github.com/{{user}}/{{project}}">
+            <h3 class="en repository">See Repository</h3>
+            <h3 class="ja repository">リポジトリを見る</h3>
+          </a>
+        </template>
       <section id="section"></section>
-      <section id="related-{{revision}}" class="related"></section>
+      <template is="dom-if" if="{{revision}}">
+        <section id="related-{{revision}}" class="related"></section>
+      </template>
+      <template is="dom-if" if="{{!revision}}">
+          <section id="related-{{project}}" class="related"></section>
+      </template>
     </section>
-    <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md">
-      if ("{{language}}" == "en") {
-        var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
-      } else  {
-        var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.{{language}}.md";
-      }
-      console.log(url1);
-      var xhr1 = new XMLHttpRequest;
-      xhr1.open('GET', url1);
-      xhr1.onload = function loaded1(){
-        var contentGithubTag = contentPanelTag.getElementById('{{revision}}').shadowRoot;
-        var githubSection = contentGithubTag.getElementById("section");
-        var response = marked(this.response).split('<a').join('<a target="_blank"');
-        githubSection.innerHTML = response;
-      };
-      xhr1.send();
-      var relatedList = "{{related}}".split(",");
-      for (i of relatedList) {
+    <template is="dom-if" if="{{revision}}">    
+      <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md">
         if ("{{language}}" == "en") {
-          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/readme/"+ i.split(":::")[0] +".md";
+          var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.md";
         } else  {
-          var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/readme/"+ i.split(":::")[0] +".{{language}}.md";
+          var url1 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/README.{{language}}.md";
         }
-        var xhr2 = new XMLHttpRequest;
-        xhr2.open('GET', url2);
-        xhr2.onload = function loaded2(i){
+        var xhr1 = new XMLHttpRequest;
+        xhr1.open('GET', url1);
+        xhr1.onload = function loaded1(){
           var contentGithubTag = contentPanelTag.getElementById('{{revision}}').shadowRoot;
-          var githubRelated = contentGithubTag.getElementById("related-{{revision}}");
-          var element = document.createElement("section");
-          var h3 = document.createElement("h3");
-          h3.classList.add("switch");
-          element.classList.add("child");
+          var githubSection = contentGithubTag.getElementById("section");
           var response = marked(this.response).split('<a').join('<a target="_blank"');
-          element.innerHTML = response;
-          var title = element.getElementsByTagName("h1")[0].innerText;
-          h3.innerText = title;
-          h3.addEventListener('click', function(){
-            this.parentElement.classList.toggle('show');
-          });
-          githubRelated.appendChild(element);
-          githubRelated.insertBefore(h3, element);
+          githubSection.innerHTML = response;
+        };
+        xhr1.send();
+        var relatedList = "{{related}}".split(",");
+        for (i of relatedList) {
+          if ("{{language}}" == "en") {
+            var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/readme/"+ i.split(":::")[0] +".md";
+          } else  {
+            var url2 = "https://rawgit.com/{{user}}/{{project}}/{{revision}}/readme/"+ i.split(":::")[0] +".{{language}}.md";
+          }
+          var xhr2 = new XMLHttpRequest;
+          xhr2.open('GET', url2);
+          xhr2.onload = function loaded2(i){
+            var contentGithubTag = contentPanelTag.getElementById('{{revision}}').shadowRoot;
+            var githubRelated = contentGithubTag.getElementById("related-{{revision}}");
+            var element = document.createElement("section");
+            var h3 = document.createElement("h3");
+            h3.classList.add("switch");
+            element.classList.add("child");
+            var response = marked(this.response).split('<a').join('<a target="_blank"');
+            element.innerHTML = response;
+            var title = element.getElementsByTagName("h1")[0].innerText;
+            h3.innerText = title;
+            h3.addEventListener('click', function(){
+              this.parentElement.classList.toggle('show');
+            });
+            githubRelated.appendChild(element);
+            githubRelated.insertBefore(h3, element);
+          }
+          xhr2.send();
         }
-        xhr2.send();
-      }
-    </script>
+      </script>
+    </template>
+    <template is="dom-if" if="{{!revision}}">    
+        <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/master/README.md">
+          if ("{{language}}" == "en") {
+            var url1 = "https://rawgit.com/{{user}}/{{project}}/master/README.md";
+          } else  {
+            var url1 = "https://rawgit.com/{{user}}/{{project}}/master/README.{{language}}.md";
+          }
+          var xhr1 = new XMLHttpRequest;
+          xhr1.open('GET', url1);
+          xhr1.onload = function loaded1(){
+            var contentGithubTag = contentPanelTag.getElementById('{{project}}').shadowRoot;
+            var githubSection = contentGithubTag.getElementById("section");
+            var response = marked(this.response).split('<a').join('<a target="_blank"');
+            githubSection.innerHTML = response;
+          };
+          xhr1.send();
+          var relatedList = "{{related}}".split(",");
+          for (i of relatedList) {
+            if ("{{language}}" == "en") {
+              var url2 = "https://rawgit.com/{{user}}/{{project}}/master/readme/"+ i.split(":::")[0] +".md";
+            } else  {
+              var url2 = "https://rawgit.com/{{user}}/{{project}}/master/readme/"+ i.split(":::")[0] +".{{language}}.md";
+            }
+            var xhr2 = new XMLHttpRequest;
+            xhr2.open('GET', url2);
+            xhr2.onload = function loaded2(i){
+              var contentGithubTag = contentPanelTag.getElementById('{{project}}').shadowRoot;
+              var githubRelated = contentGithubTag.getElementById("related-{{project}}");
+              var element = document.createElement("section");
+              var h3 = document.createElement("h3");
+              h3.classList.add("switch");
+              element.classList.add("child");
+              var response = marked(this.response).split('<a').join('<a target="_blank"');
+              element.innerHTML = response;
+              var title = element.getElementsByTagName("h1")[0].innerText;
+              h3.innerText = title;
+              h3.addEventListener('click', function(){
+                this.parentElement.classList.toggle('show');
+              });
+              githubRelated.appendChild(element);
+              githubRelated.insertBefore(h3, element);
+            }
+            xhr2.send();
+          }
+        </script>
+      </template>
   </template>
 
   <script>
