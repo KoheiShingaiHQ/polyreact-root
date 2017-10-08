@@ -301,16 +301,16 @@
       </script>
     </template>
     <template is="dom-if" if="{{!revision}}">    
-        <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/master/README.md">
+        <script id="script" data-src$="https://rawgit.com/{{user}}/{{project}}/master/{{file}}.md">
           if ("{{language}}" == "en") {
-            var url1 = "https://rawgit.com/{{user}}/{{project}}/master/README.md";
+            var url1 = "https://rawgit.com/{{user}}/{{project}}/master/{{file}}.md";
           } else  {
-            var url1 = "https://rawgit.com/{{user}}/{{project}}/master/README.{{language}}.md";
+            var url1 = "https://rawgit.com/{{user}}/{{project}}/master/{{file}}.{{language}}.md";
           }
           var xhr1 = new XMLHttpRequest;
           xhr1.open('GET', url1);
           xhr1.onload = function loaded1(){
-            var contentGithubTag = contentPanelTag.getElementById('{{project}}').shadowRoot;
+            var contentGithubTag = contentPanelTag.getElementById('{{project}}-{{file}}').shadowRoot;
             var githubSection = contentGithubTag.getElementById("section");
             var response = marked(this.response).split('<a').join('<a target="_blank"');
             githubSection.innerHTML = response;
@@ -326,7 +326,7 @@
             var xhr2 = new XMLHttpRequest;
             xhr2.open('GET', url2);
             xhr2.onload = function loaded2(i){
-              var contentGithubTag = contentPanelTag.getElementById('{{project}}').shadowRoot;
+              var contentGithubTag = contentPanelTag.getElementById('{{project}}-{{file}}').shadowRoot;
               var githubRelated = contentGithubTag.getElementById("related-{{project}}");
               var element = document.createElement("section");
               var h3 = document.createElement("h3");
@@ -380,6 +380,10 @@
           language: {
             type: String,
             value: ''
+          },
+          file: {
+            type: String,
+            value: 'README'            
           }
         };
       }

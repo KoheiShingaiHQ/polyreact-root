@@ -59,8 +59,11 @@
           element["hue-reverse"] = hueReverse;
           for (j in data) {
             element[j] = data[j];
-            if (j == "project") {
-              element.setAttribute("id", data[j]);
+            if (element.id == "") {
+              element.setAttribute("id", data['project'] + "-README");
+            }
+            if (j == "file") {
+              element.setAttribute("id", data['project'] + "-" + data[j]);
             }
             if (j == "revision") {
               element.setAttribute("id", data[j]);
