@@ -237,17 +237,25 @@
       }
     </style>
     <section class$="{{language}}">
-        <template is="dom-if" if="{{revision}}">
-          <a target="_blank" href="https://github.com/{{user}}/{{project}}/tree/{{revision}}">
-            <h3 class="en repository">See Repository</h3>
-            <h3 class="ja repository">リポジトリを見る</h3>
-          </a>
+        <template is="dom-if" if="{{post}}">
+            <a target="_blank" href="{{post}}">
+              <h3 class="en repository">See on CodePen</h3>
+              <h3 class="ja repository">Qiita で見る</h3>
+            </a>
         </template>
-        <template is="dom-if" if="{{!revision}}">
-          <a target="_blank" href="https://github.com/{{user}}/{{project}}">
-            <h3 class="en repository">See Repository</h3>
-            <h3 class="ja repository">リポジトリを見る</h3>
-          </a>
+        <template is="dom-if" if="{{!post}}">
+          <template is="dom-if" if="{{revision}}">
+            <a target="_blank" href="https://github.com/{{user}}/{{project}}/tree/{{revision}}">
+              <h3 class="en repository">See Repository</h3>
+              <h3 class="ja repository">リポジトリを見る</h3>
+            </a>
+          </template>
+          <template is="dom-if" if="{{!revision}}">
+            <a target="_blank" href="https://github.com/{{user}}/{{project}}">
+              <h3 class="en repository">See Repository</h3>
+              <h3 class="ja repository">リポジトリを見る</h3>
+            </a>
+          </template>
         </template>
       <section id="section"></section>
       <template is="dom-if" if="{{revision}}">
@@ -389,7 +397,11 @@
           file: {
             type: String,
             value: 'README'            
-          }
+          },
+          post: {
+            type: String,
+            value: ''
+          },
         };
       }
     }
